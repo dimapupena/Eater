@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 class MainCoordinatorFactory {
     
     func makeHeadVC() -> HeadViewController {
         return HeadViewController()
+    }
+    
+    func makeHomeCoordinator(router: UINavigationController, factory: HomeCoordinatorFactory) -> HomeCoordinator {
+        return HomeCoordinator(router: router, factory: factory)
     }
     
 }

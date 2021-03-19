@@ -18,9 +18,15 @@ class MainCoordinator: BaseCoordinator {
     
     override func start() {
         let vc = factory.makeHeadVC()
-        vc.onButtonClick = {[weak self] in
-            print("action")
+        vc.onButtonClick = {
+            self.makeHomeFlow()
         }
         router.pushViewController(vc, animated: true)
+    }
+    
+    func makeHomeFlow() {
+        let homeCo = factory.makeHomeCoordinator(router: router, factory: HomeCoordinatorFactory())
+        self.addChild(homeCo)
+        homeCo.start()
     }
 }

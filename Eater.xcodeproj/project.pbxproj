@@ -18,6 +18,13 @@
 		6D30B77425E8000500F226EA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B77325E8000500F226EA /* BaseCoordinator.swift */; };
 		6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78225E8059B00F226EA /* UIExtentions.swift */; };
 		6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78B25E806C900F226EA /* StandartActionButton.swift */; };
+		6D6C14E32603726E002423D6 /* restaurantData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* restaurantData.json */; };
+		6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */; };
+		6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */; };
+		6D6C14FF26037C3D002423D6 /* RestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14FE26037C3D002423D6 /* RestaurantVC.swift */; };
+		6D6C150526039051002423D6 /* RestaurantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C150426039051002423D6 /* RestaurantViewCell.swift */; };
+		6D8644072604BAD300B1DBB1 /* ReastaurantWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8644062604BAD300B1DBB1 /* ReastaurantWebView.swift */; };
+		6D86441D2604DCF200B1DBB1 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D86441C2604DCF200B1DBB1 /* BackButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,13 @@
 		6D30B77325E8000500F226EA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		6D30B78225E8059B00F226EA /* UIExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
 		6D30B78B25E806C900F226EA /* StandartActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartActionButton.swift; sourceTree = "<group>"; };
+		6D6C14E22603726E002423D6 /* restaurantData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = restaurantData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorFactory.swift; sourceTree = "<group>"; };
+		6D6C14FE26037C3D002423D6 /* RestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantVC.swift; sourceTree = "<group>"; };
+		6D6C150426039051002423D6 /* RestaurantViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewCell.swift; sourceTree = "<group>"; };
+		6D8644062604BAD300B1DBB1 /* ReastaurantWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReastaurantWebView.swift; sourceTree = "<group>"; };
+		6D86441C2604DCF200B1DBB1 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +115,7 @@
 		6D30B71125E7FA3D00F226EA /* Eater */ = {
 			isa = PBXGroup;
 			children = (
+				6D6C14E026037218002423D6 /* Model */,
 				6D30B77225E7FFFB00F226EA /* Healers */,
 				6D30B75025E7FD7600F226EA /* Application */,
 				6D30B74E25E7FD3600F226EA /* VC */,
@@ -114,6 +129,8 @@
 		6D30B74E25E7FD3600F226EA /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				6D8644052604BAAD00B1DBB1 /* ReastaurantWebView */,
+				6D6C14FD26037C29002423D6 /* RestaurantVC */,
 				6D30B79425E80DF300F226EA /* HeadView */,
 				6D30B76C25E7FF0C00F226EA /* Factories */,
 				6D30B75625E7FDE700F226EA /* Protocols */,
@@ -125,7 +142,7 @@
 		6D30B74F25E7FD5300F226EA /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				6D30B79525E80E2100F226EA /* New Group */,
+				6D30B79525E80E2100F226EA /* HomeCoordinator */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -152,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				6D30B76D25E7FF2C00F226EA /* MainCoordinatorFactory.swift */,
+				6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -186,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				6D30B78B25E806C900F226EA /* StandartActionButton.swift */,
+				6D86441C2604DCF200B1DBB1 /* BackButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,11 +217,53 @@
 			path = HeadView;
 			sourceTree = "<group>";
 		};
-		6D30B79525E80E2100F226EA /* New Group */ = {
+		6D30B79525E80E2100F226EA /* HomeCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */,
 			);
-			path = "New Group";
+			path = HomeCoordinator;
+			sourceTree = "<group>";
+		};
+		6D6C14E026037218002423D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D6C14E126037226002423D6 /* data */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6D6C14E126037226002423D6 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				6D6C14E22603726E002423D6 /* restaurantData.json */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		6D6C14FD26037C29002423D6 /* RestaurantVC */ = {
+			isa = PBXGroup;
+			children = (
+				6D6C150326039020002423D6 /* RestaurantCell */,
+				6D6C14FE26037C3D002423D6 /* RestaurantVC.swift */,
+			);
+			path = RestaurantVC;
+			sourceTree = "<group>";
+		};
+		6D6C150326039020002423D6 /* RestaurantCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D6C150426039051002423D6 /* RestaurantViewCell.swift */,
+			);
+			path = RestaurantCell;
+			sourceTree = "<group>";
+		};
+		6D8644052604BAAD00B1DBB1 /* ReastaurantWebView */ = {
+			isa = PBXGroup;
+			children = (
+				6D8644062604BAD300B1DBB1 /* ReastaurantWebView.swift */,
+			);
+			path = ReastaurantWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +371,7 @@
 			files = (
 				6D30B71F25E7FA3D00F226EA /* LaunchScreen.storyboard in Resources */,
 				6D30B71C25E7FA3D00F226EA /* Assets.xcassets in Resources */,
+				6D6C14E32603726E002423D6 /* restaurantData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,14 +397,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D30B76E25E7FF2C00F226EA /* MainCoordinatorFactory.swift in Sources */,
+				6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */,
 				6D30B76025E7FEB300F226EA /* HeadViewController.swift in Sources */,
+				6D6C150526039051002423D6 /* RestaurantViewCell.swift in Sources */,
+				6D6C14FF26037C3D002423D6 /* RestaurantVC.swift in Sources */,
 				6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */,
+				6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */,
 				6D30B75225E7FD9B00F226EA /* MainCoordinator.swift in Sources */,
 				6D30B75825E7FE0A00F226EA /* Coordinator.swift in Sources */,
 				6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */,
 				6D30B77425E8000500F226EA /* BaseCoordinator.swift in Sources */,
 				6D30B71325E7FA3D00F226EA /* AppDelegate.swift in Sources */,
+				6D8644072604BAD300B1DBB1 /* ReastaurantWebView.swift in Sources */,
 				6D30B71525E7FA3D00F226EA /* SceneDelegate.swift in Sources */,
+				6D86441D2604DCF200B1DBB1 /* BackButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AB5M8RU444;
 				INFOPLIST_FILE = Eater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -527,6 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AB5M8RU444;
 				INFOPLIST_FILE = Eater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

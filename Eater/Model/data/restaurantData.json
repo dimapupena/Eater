@@ -1,0 +1,59 @@
+{
+    "restaurants": [
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg"
+            "adress": "adress 1",
+            "rating" : "6.5"
+            "url": "https://translate.google.com"
+        },
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg"
+            "adress": "adress 1",
+            "rating" : "6.5"
+            "url": "https://translate.google.com"
+        },
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "logoImage": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe7%2FInstagram_logo_2016.svg%2F768px-Instagram_logo_2016.svg.png&imgrefurl=https%3A%2F%2Fru.m.wikipedia.org%2Fwiki%2F%25D0%25A4%25D0%25B0%25D0%25B9%25D0%25BB%3AInstagram_logo_2016.svg&tbnid=LYlSJfqhwq5GoM&vet=12ahUKEwiEjtPkjbzvAhXx_CoKHZ3tBkUQMygCegUIARDcAQ..i&docid=T2iB4cPVAiIOfM&w=768&h=768&q=logo%20image&client=safari&ved=2ahUKEwiEjtPkjbzvAhXx_CoKHZ3tBkUQMygCegUIARDcAQ",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
+            "adress": "adress 1",
+            "rating" : "6.5",
+            "url": "https://translate.google.com"
+        },
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg"
+            "adress": "adress 1",
+            "rating" : "6.5"
+            "url": "https://translate.google.com"
+        },
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg"
+            "adress": "adress 1",
+            "rating" : "6.5"
+            "url": "https://translate.google.com"
+        },
+        {
+            "name": "Molecule Man",
+            "discription": "some text"
+            "sheff": "name lastName",
+            "photo": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg"
+            "adress": "adress 1",
+            "rating" : "6.5"
+            "url": "https://translate.google.com"
+        },
+    ]
+}
