@@ -10,17 +10,21 @@ import UIKit
 
 class RestaurantViewCell: UICollectionViewCell {
     
-    lazy var logoImage: UIImageView = {
+    var content: RestaurantContent?
+    
+    private lazy var logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.downloaded(from: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMJpLJJY_vaLs0MLWDGLosA5tzKfrqSnVcjQ&usqp=CAU")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .clear
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
+        imageView.layer.shadowRadius = 30
+        imageView.layer.shadowOpacity = 0.3
         return imageView
     }()
     
-    lazy var headImage: UIImageView = {
+    private lazy var headImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.downloaded(from: "https://m.media-amazon.com/images/M/MV5BOTM2NTI3NTc3Nl5BMl5BanBnXkFtZTgwNzM1OTQyNTM@._V1_SX300.jpg", contentMode: .scaleToFill)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 15
@@ -31,37 +35,47 @@ class RestaurantViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
-
-        self.translatesAutoresizingMaskIntoConstraints = false
+    deinit {
+        logoImage.removeFromSuperview()
+        headImage.removeFromSuperview()
+    }
+    
+    func setupViewParameters(_ content: RestaurantContent) {
+        self.content = content
+        logoImage.downloaded(from: content.hearePhoto, contentMode: .scaleToFill)
+        headImage.downloaded(from: content.photo, contentMode: .scaleToFill)
         
+        setupViews()
+    }
+    
+    private func setupViews() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         setLogoImage()
         setHeadImage()
     }
     
-    func setLogoImage() {
-        self.addSubview(logoImage)
+    private func setLogoImage() {
+        contentView.addSubview(logoImage)
         
-        logoImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        logoImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         logoImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
         logoImage.heightAnchor.constraint(equalToConstant: 70).isActive = true
     }
     
-    func setHeadImage() {
-        self.addSubview(headImage)
+    private func setHeadImage() {
+        contentView.addSubview(headImage)
         
-        headImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        headImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         headImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor , constant: 20).isActive = true
-        headImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        headImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50).isActive = true
+        headImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        headImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 }

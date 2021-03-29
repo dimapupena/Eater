@@ -1,5 +1,5 @@
 //
-//  ReastaurantWebView.swift
+//  RestaurantWebView.swift
 //  Eater
 //
 //  Created by Dmitriy Pupena on 19.03.2021.
@@ -8,15 +8,13 @@
 import Foundation
 import WebKit
 
-class ReastaurantWebView: UIViewController, WKNavigationDelegate {
+class RestaurantWebView: UIViewController, WKNavigationDelegate {
     
     var onFinish: (() -> Void)?
 
     private lazy var webView: WKWebView = {
       let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
-        let url = URL(string: "https://www.amsterdamster.com.ua")!
-        webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         return webView
     }()
@@ -32,18 +30,28 @@ class ReastaurantWebView: UIViewController, WKNavigationDelegate {
         self.view.backgroundColor = .white
 
         webView.navigationDelegate = self
+    }
+    
+    func setupView(_ link: String) {
+        updateWebLink(link)
+        
         setupBackButton()
         setupWebView()
     }
+    
+    func updateWebLink(_ link: String) {
+        guard let url = URL(string: link) else { print("sorry, but we can't find this webSite") ;return}
+        webView.load(URLRequest(url: url))
+    }
 
-    func setupBackButton() {
+    private func setupBackButton() {
         self.view.addSubview(backButton)
 
         backButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
     }
 
-    func setupWebView() {
+    private func setupWebView() {
         self.view.addSubview(webView)
 
         webView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20).isActive = true

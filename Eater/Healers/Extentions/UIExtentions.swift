@@ -29,21 +29,26 @@ extension UIView {
 }
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.image = image
+        let imageURL = url
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: imageURL) { (data, response, error) in
+            guard error == nil else { print("ERROR: with downloading image"); return }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                guard httpResponse.statusCode == 200 else { return }
+                if let receivedData = data {
+                    DispatchQueue.main.async {
+                        print("success")
+                        self.image = UIImage(data: receivedData)
+                    }
+                }
             }
-        }.resume()
+        }
+        task.resume()
     }
-    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }

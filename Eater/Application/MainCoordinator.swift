@@ -17,6 +17,7 @@ class MainCoordinator: BaseCoordinator {
     }
     
     override func start() {
+        ConfigManager.sharer.loadData()
         let vc = factory.makeHeadVC()
         vc.onButtonClick = {
             self.makeHomeFlow()

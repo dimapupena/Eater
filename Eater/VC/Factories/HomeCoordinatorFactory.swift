@@ -13,8 +13,10 @@ class HomeCoordinatorFactory {
         return RestaurantVC()
     }
     
-    func makeRestaurantWebVC() -> ReastaurantWebView {
-        return ReastaurantWebView()
+    func makeRestaurantWebVC(_ link: String?) -> RestaurantWebView {
+        let webView = RestaurantWebView()
+        webView.setupView(link ?? "https://www.google.com")
+        return webView
     }
     
 }

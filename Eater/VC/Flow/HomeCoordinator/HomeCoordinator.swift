@@ -18,14 +18,14 @@ class HomeCoordinator : BaseCoordinator {
     
     override func start() {
         let vc = factory.makeRestaurantVC()
-        vc.openWebViewItem = { [weak self] in
-            self?.makeReastaurantWebView()
+        vc.openWebViewItem = { [weak self] link in
+            self?.makeRestaurantWebView(link)
         }
         router.pushViewController(vc, animated: true)
     }
     
-    func makeReastaurantWebView() {
-        let webVC = self.factory.makeRestaurantWebVC()
+    func makeRestaurantWebView(_ link: String?) {
+        let webVC = self.factory.makeRestaurantWebVC(link)
         webVC.onFinish = { 
             self.router.popViewController(animated: true)
         }

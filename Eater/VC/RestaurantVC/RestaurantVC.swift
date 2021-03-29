@@ -10,7 +10,13 @@ import UIKit
 
 class RestaurantVC: UIViewController {
     
-    var openWebViewItem: (() -> Void)?
+    var restaurantdata: [RestaurantContent]? {
+        get {
+            return ConfigManager.sharer.appConfiguration?.restaurants
+        }
+    }
+    
+    var openWebViewItem: ((_ link: String?) -> Void)?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -92,11 +98,15 @@ class RestaurantVC: UIViewController {
 
 extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return restaurantdata?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = restaurantCollection.dequeueReusableCell(withReuseIdentifier: "RestaurantViewCell", for: indexPath) as! RestaurantViewCell
+        if let restaurantdata = self.restaurantdata {
+            cell.setupViewParameters(restaurantdata[indexPath.row])
+            print(indexPath.row)
+        }
         return cell
     }
     
@@ -104,8 +114,12 @@ extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return CGSize(width: UIScreen.main.bounds.size.width - 80, height: UIScreen.main.bounds.size.height - 250)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.openWebViewItem?()
+        self.openWebViewItem?(restaurantdata?[indexPath.row].url)
     }
     
 }
