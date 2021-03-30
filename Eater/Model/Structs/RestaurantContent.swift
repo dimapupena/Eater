@@ -14,11 +14,11 @@ struct AppConfiguration: Decodable {
 
 struct RestaurantContent: Decodable {
     let name        : String
-    let discription : String
+    let description : String
     let sheff       : String
     let photo       : String
     let hearePhoto  : String
-    let adress      : String
+    let address      : String
     let rating      : String
     let url         : String
 }
