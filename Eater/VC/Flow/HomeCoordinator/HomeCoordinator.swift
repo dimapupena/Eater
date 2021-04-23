@@ -18,6 +18,9 @@ class HomeCoordinator : BaseCoordinator {
     
     override func start() {
         let vc = factory.makeRestaurantVC()
+        vc.backButtonAction = { [weak self] in
+            self?.router.popViewController(animated: true)
+        }
         vc.openWebViewItem = { [weak self] link in
             self?.makeRestaurantWebView(link)
         }

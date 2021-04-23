@@ -17,6 +17,13 @@ class RestaurantVC: UIViewController {
     }
     
     var openWebViewItem: ((_ link: String?) -> Void)?
+    var backButtonAction: (() -> Void)?
+    
+    private let backButton: BackButton = {
+        let button = BackButton()
+        button.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
+        return button
+    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -58,9 +65,17 @@ class RestaurantVC: UIViewController {
     }
     
     func setupView() {
+        setupBackButton()
         setupTitleLabel()
         setupDescriptionLabel()
         setupCollectionView()
+    }
+    
+    func setupBackButton() {
+        view.addSubview(backButton)
+        
+        backButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
     }
     
     func setupTitleLabel() {
@@ -92,6 +107,10 @@ class RestaurantVC: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         restaurantCollection.collectionViewLayout = layout
+    }
+    
+    @objc func backButtonClicked() {
+        self.backButtonAction?()
     }
     
 }
