@@ -22,7 +22,18 @@ class MainCoordinator: BaseCoordinator {
         vc.onButtonClick = {
             self.makeHomeFlow()
         }
+        vc.userInformationAction = { [weak self] in
+            self?.makeInformationVC(info: UserUsefulInformation(title: "some title", description: "some description"))
+        }
         router.pushViewController(vc, animated: true)
+    }
+    
+    func makeInformationVC(info: UserUsefulInformation) {
+        let informationVC = factory.makeImportantinformationVC(userInformation: info)
+        informationVC.backButtonAction = { [weak self] in
+            self?.router.popViewController(animated: true)
+        }
+        router.pushViewController(informationVC, animated: true)
     }
     
     func makeHomeFlow() {

@@ -14,6 +14,10 @@ class MainCoordinatorFactory {
         return HeadViewController()
     }
     
+    func makeImportantinformationVC(userInformation: UserUsefulInformation) -> ImportantInformationVC {
+        return ImportantInformationVC(importantInformation: userInformation)
+    }
+    
     func makeHomeCoordinator(router: UINavigationController, factory: HomeCoordinatorFactory) -> HomeCoordinator {
         return HomeCoordinator(router: router, factory: factory)
     }

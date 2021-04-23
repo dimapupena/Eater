@@ -11,12 +11,19 @@ import UIKit
 class HeadViewController: UIViewController {
     
     var onButtonClick: (() -> Void)?
+    var userInformationAction: (() -> Void)?
     
     let backgroundView: UIImageView = {
         let view =  UIImageView()
         view.image = UIImage(named: "headBackground")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    let userInformationbutton: InformationButton = {
+        let button = InformationButton()
+        button.addTarget(self, action: #selector(userInformationButtonClicked), for: .touchUpInside)
+        return button
     }()
     
     let actionButton: StandartActionButton = {
@@ -35,6 +42,7 @@ class HeadViewController: UIViewController {
     
     func setupViews() {
         setupBackgroundView()
+        setupUserInformationButton()
         setupActionButton()
     }
     
@@ -54,7 +62,18 @@ class HeadViewController: UIViewController {
         actionButton.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
     }
     
+    func setupUserInformationButton() {
+        self.view.addSubview(userInformationbutton)
+        
+        userInformationbutton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        userInformationbutton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+    }
+    
     @objc func buttonClick() {
         self.onButtonClick?()
+    }
+    
+    @objc func userInformationButtonClicked() {
+        self.userInformationAction?()
     }
 }
