@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol RestaurantViewDelegate: class {
-    func bookStatusClicked()
+    func bookStatusClicked(to newValue: Bool)
 }
 
 class RestaurantView: UIView {
@@ -98,21 +98,21 @@ class RestaurantView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViewParameters(_ content: RestaurantContent) {
+    func setupViewParameters(_ content: RealmRestaurants) {
         loadData(content)
         setupViews()
     }
     
-    private func loadData(_ data: RestaurantContent){
+    private func loadData(_ data: RealmRestaurants){
         titleLabel.text = data.name
-        descriptionLabel.text = data.description
-        sheffLabel.text = sheffLabel.text?.replacingOccurrences(of: "@sheffName@", with: data.sheff)
-        addressLabel.text = addressLabel.text?.replacingOccurrences(of: "@addressText@", with: data.address)
+        descriptionLabel.text = data.placeDescription
+        sheffLabel.text = sheffLabel.text?.replacingOccurrences(of: "@sheffName@", with: data.sheff ?? "")
+        addressLabel.text = addressLabel.text?.replacingOccurrences(of: "@addressText@", with: data.address ?? "")
         ratingLabel.text = data.rating
-        self.isFavourite = data.isFavourite ?? false
+        self.isFavourite = data.isFavourite
         
-        logoImage.downloaded(from: data.hearePhoto, contentMode: .scaleToFill)
-        headImage.downloaded(from: data.photo, contentMode: .scaleToFill)
+        logoImage.downloaded(from: data.mainPhotoUrl ?? "" , contentMode: .scaleToFill)
+        headImage.downloaded(from: data.logoPhotoUrl ?? "", contentMode: .scaleToFill)
     }
     
     private func setupViews() {
@@ -202,6 +202,6 @@ class RestaurantView: UIView {
     @objc func bokkStatusChanged()
     {
         self.isFavourite = !self.isFavourite
-        delegate?.bookStatusClicked()
+        delegate?.bookStatusClicked(to: self.isFavourite)
     }
 }

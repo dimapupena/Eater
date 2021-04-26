@@ -9,7 +9,7 @@ import Foundation
 import Realm
 import RealmSwift
 
-class RealmUserFavouritePlaces: Object {
+class RealmRestaurants: Object {
     
     @objc dynamic var name: String = ""
     @objc dynamic var placeDescription: String?

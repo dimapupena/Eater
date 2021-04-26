@@ -10,7 +10,7 @@ import UIKit
 
 class RestaurantViewCell: UICollectionViewCell {
     
-    var content: RestaurantContent?
+    var restaurantName: String = ""
     
     var restaurantView: RestaurantView = RestaurantView()
     var restaurantModel: RestaurantCellModel = RestaurantCellModel()
@@ -24,20 +24,21 @@ class RestaurantViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViewParameters(_ content: RestaurantContent) {
-        self.content = content
+    func setupViewParameters(_ restaurantName: String) {
+        self.restaurantName = restaurantName
         setupRestaurantView()
     }
     
     func setupRestaurantView() {
-        restaurantView.setupViewParameters(self.content!)
+        guard let rastaurant = RestaurantManager.shared.getRestaurantFromRealm(restaurantName: restaurantName) else { return }
+        restaurantView.setupViewParameters(rastaurant)
         self.contentView.addSubview(restaurantView)
         restaurantView.setZeroConstraits(with: self.contentView)
     }
 }
 
 extension RestaurantViewCell: RestaurantViewDelegate {
-    func bookStatusClicked() {
-        print("changed")
+    func bookStatusClicked(to newValue: Bool) {
+        restaurantModel.updateIsFaforiteStatus(to: newValue, restaurantName: self.restaurantName)
     }
 }

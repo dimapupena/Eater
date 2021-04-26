@@ -9,6 +9,8 @@ import Foundation
 
 class RestaurantCellModel {
     
-    
+    func updateIsFaforiteStatus(to newStatus: Bool, restaurantName: String) {
+        RestaurantManager.shared.updateFavouriteStatus(to: newStatus, restaurantName: restaurantName)
+    }
     
 }

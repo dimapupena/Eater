@@ -123,7 +123,7 @@ extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = restaurantCollection.dequeueReusableCell(withReuseIdentifier: "RestaurantViewCell", for: indexPath) as! RestaurantViewCell
         if let restaurantdata = self.restaurantdata {
-            cell.setupViewParameters(restaurantdata[indexPath.row])
+            cell.setupViewParameters(restaurantdata[indexPath.row].name)
             print(indexPath.row)
         }
         return cell
