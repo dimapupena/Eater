@@ -10,5 +10,31 @@ import Realm
 import RealmSwift
 
 class RealmUserFavouritePlaces: Object {
-    @objc dynamic var key: String!
+    
+    @objc dynamic var name: String = ""
+    @objc dynamic var placeDescription: String?
+    @objc dynamic var sheff: String?
+    @objc dynamic var logoPhotoUrl: String?
+    @objc dynamic var mainPhotoUrl: String?
+    @objc dynamic var address: String?
+    @objc dynamic var rating: String?
+    @objc dynamic var restrauntUrl: String?
+    @objc dynamic var isFavourite: Bool = false
+    
+    override class func primaryKey() -> String? {
+        return "name"
+    }
+    
+    convenience init(data: RestaurantContent) {
+        self.init()
+        self.name = data.name
+        self.placeDescription = data.description
+        self.sheff = data.sheff
+        self.logoPhotoUrl = data.photo
+        self.mainPhotoUrl = data.hearePhoto
+        self.address = data.address
+        self.rating = data.rating
+        self.restrauntUrl = data.url
+        self.isFavourite = data.isFavourite ?? false
+    }
 }

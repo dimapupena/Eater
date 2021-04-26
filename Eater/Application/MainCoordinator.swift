@@ -17,7 +17,18 @@ class MainCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        ConfigManager.sharer.loadData()
+        startInitialFlow()
+        makeHeadVC()
+    }
+    
+    func startInitialFlow() {
+        DispatchQueue.main.async {
+            ConfigManager.sharer.loadData()
+            RealmHelper.updateRealmData()
+        }
+    }
+    
+    func makeHeadVC() {
         let vc = factory.makeHeadVC()
         vc.onButtonClick = {
             self.makeHomeFlow()
