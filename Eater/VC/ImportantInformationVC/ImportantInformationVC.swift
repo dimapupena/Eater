@@ -44,7 +44,7 @@ class ImportantInformationVC: UIViewController {
         let textView = UITextView()
         textView.textColor = .black
         textView.text = ".center"
-        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
@@ -70,25 +70,23 @@ class ImportantInformationVC: UIViewController {
         view.addSubview(backButton)
         backButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func setupTitleView() {
         view.addSubview(titleLabel)
-        titleLabel.leadingAnchor.constraint(equalTo: self.backButton.trailingAnchor, constant: 10).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: backButton.topAnchor, constant: 5).isActive = true
-        titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.view.trailingAnchor, constant: -5).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: backButton.topAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: backButton.bottomAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 10).isActive = true
         
         textView.text = importantInformation.title
     }
     
     private func setupTextView() {
         view.addSubview(textView)
-        textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5).isActive = true
         textView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10).isActive = true
-        textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 5).isActive = true
         textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         textView.text = importantInformation.description
