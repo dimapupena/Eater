@@ -13,9 +13,11 @@ class RestaurantViewCell: UICollectionViewCell {
     var content: RestaurantContent?
     
     var restaurantView: RestaurantView = RestaurantView()
+    var restaurantModel: RestaurantCellModel = RestaurantCellModel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        restaurantView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -32,5 +34,10 @@ class RestaurantViewCell: UICollectionViewCell {
         self.contentView.addSubview(restaurantView)
         restaurantView.setZeroConstraits(with: self.contentView)
     }
-    
+}
+
+extension RestaurantViewCell: RestaurantViewDelegate {
+    func bookStatusClicked() {
+        print("changed")
+    }
 }

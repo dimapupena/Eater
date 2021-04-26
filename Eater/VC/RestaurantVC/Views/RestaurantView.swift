@@ -8,7 +8,18 @@
 import Foundation
 import UIKit
 
+protocol RestaurantViewDelegate: class {
+    func bookStatusClicked()
+}
+
 class RestaurantView: UIView {
+    
+    weak var delegate: RestaurantViewDelegate?
+    var isFavourite: Bool = false {
+        didSet {
+            bookMark.image = isFavourite ? UIImage(named: "bookmark_black") : UIImage(named: "bookmark_white")
+        }
+    }
     
     private var titleLabel: UILabel = {
         var label = UILabel()
@@ -33,6 +44,12 @@ class RestaurantView: UIView {
         imageView.layer.cornerRadius = 15
         imageView.layer.shadowRadius = 30
         imageView.layer.shadowOpacity = 0.3
+        return imageView
+    }()
+    
+    private lazy var bookMark: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -92,6 +109,7 @@ class RestaurantView: UIView {
         sheffLabel.text = sheffLabel.text?.replacingOccurrences(of: "@sheffName@", with: data.sheff)
         addressLabel.text = addressLabel.text?.replacingOccurrences(of: "@addressText@", with: data.address)
         ratingLabel.text = data.rating
+        self.isFavourite = data.isFavourite ?? false
         
         logoImage.downloaded(from: data.hearePhoto, contentMode: .scaleToFill)
         headImage.downloaded(from: data.photo, contentMode: .scaleToFill)
@@ -99,7 +117,9 @@ class RestaurantView: UIView {
     
     private func setupViews() {
         self.translatesAutoresizingMaskIntoConstraints = false
+        
         setLogoImage()
+        setBookMarkImage()
         setTitleLabel()
         setDescriptionLabel()
         setHeadImage()
@@ -117,12 +137,25 @@ class RestaurantView: UIView {
         logoImage.heightAnchor.constraint(equalToConstant: 70).isActive = true
     }
     
+    private func setBookMarkImage() {
+        addSubview(bookMark)
+        
+        bookMark.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor).isActive = true
+        bookMark.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
+        bookMark.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        bookMark.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(bokkStatusChanged))
+        bookMark.isUserInteractionEnabled = true
+        bookMark.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     private func setTitleLabel() {
         addSubview(titleLabel)
         
         titleLabel.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor, constant: 15).isActive = true
         titleLabel.topAnchor.constraint(equalTo: logoImage.topAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: bookMark.leadingAnchor,constant: -5).isActive = true
     }
     
     private func setDescriptionLabel() {
@@ -130,7 +163,7 @@ class RestaurantView: UIView {
         
         descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: bookMark.leadingAnchor,constant: -5).isActive = true
     }
     
     private func setHeadImage() {
@@ -164,5 +197,11 @@ class RestaurantView: UIView {
         ratingLabel.bottomAnchor.constraint(equalTo: addressLabel.bottomAnchor).isActive = true
         ratingLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         ratingLabel.leadingAnchor.constraint(equalTo: sheffLabel.trailingAnchor).isActive = true
+    }
+    
+    @objc func bokkStatusChanged()
+    {
+        self.isFavourite = !self.isFavourite
+        delegate?.bookStatusClicked()
     }
 }

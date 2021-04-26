@@ -18,7 +18,8 @@ struct RestaurantContent: Decodable {
     let sheff       : String
     let photo       : String
     let hearePhoto  : String
-    let address      : String
+    let address     : String
     let rating      : String
     let url         : String
+    let isFavourite : Bool?
 }
