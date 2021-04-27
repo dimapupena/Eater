@@ -13,7 +13,7 @@ class ConfigManager {
     static var sharer = ConfigManager()
     
     func loadData() {
-        appConfiguration = loadJson(jsonFile: "addData")
+        appConfiguration = loadJson(jsonFile: "appData")
     }
     
     func loadJson(jsonFile: String) -> AppConfiguration? {

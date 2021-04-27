@@ -18,6 +18,7 @@ class RestaurantVC: UIViewController {
     
     var openWebViewItem: ((_ link: String?) -> Void)?
     var backButtonAction: (() -> Void)?
+    var openUserLoved: (() -> Void)?
     
     private let backButton: BackButton = {
         let button = BackButton()
@@ -44,6 +45,18 @@ class RestaurantVC: UIViewController {
         return label
     }()
     
+    private let lovedRestaurant: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "lovedRestaurants")
+        imageView.backgroundColor = .clear
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
+        imageView.layer.shadowRadius = 30
+        imageView.layer.shadowOpacity = 0.3
+        return imageView
+    }()
+    
     private lazy var restaurantCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -66,6 +79,7 @@ class RestaurantVC: UIViewController {
     
     func setupView() {
         setupBackButton()
+        setupLovedRestaurant()
         setupTitleLabel()
         setupDescriptionLabel()
         setupCollectionView()
@@ -78,12 +92,25 @@ class RestaurantVC: UIViewController {
         backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
     }
     
+    func setupLovedRestaurant() {
+        view.addSubview(lovedRestaurant)
+        
+        lovedRestaurant.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+        lovedRestaurant.centerYAnchor.constraint(equalTo: backButton.centerYAnchor).isActive = true
+        lovedRestaurant.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        lovedRestaurant.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(takeUserLoved))
+        lovedRestaurant.isUserInteractionEnabled = true
+        lovedRestaurant.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     func setupTitleLabel() {
         view.addSubview(titleLabel)
         
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: lovedRestaurant.leadingAnchor, constant: -10).isActive = true
     }
     
     func setupDescriptionLabel() {
@@ -111,6 +138,10 @@ class RestaurantVC: UIViewController {
     
     @objc func backButtonClicked() {
         self.backButtonAction?()
+    }
+    
+    @objc func takeUserLoved() {
+        self.openUserLoved?()
     }
     
 }
