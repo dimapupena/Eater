@@ -19,7 +19,7 @@
 		6D30B77425E8000500F226EA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B77325E8000500F226EA /* BaseCoordinator.swift */; };
 		6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78225E8059B00F226EA /* UIExtentions.swift */; };
 		6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78B25E806C900F226EA /* StandartActionButton.swift */; };
-		6D6C14E32603726E002423D6 /* addData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* addData.json */; };
+		6D6C14E32603726E002423D6 /* appData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* appData.json */; };
 		6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */; };
 		6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */; };
 		6D6C14FF26037C3D002423D6 /* RestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14FE26037C3D002423D6 /* RestaurantVC.swift */; };
@@ -75,7 +75,7 @@
 		6D30B77325E8000500F226EA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		6D30B78225E8059B00F226EA /* UIExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
 		6D30B78B25E806C900F226EA /* StandartActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartActionButton.swift; sourceTree = "<group>"; };
-		6D6C14E22603726E002423D6 /* addData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = addData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		6D6C14E22603726E002423D6 /* appData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorFactory.swift; sourceTree = "<group>"; };
 		6D6C14FE26037C3D002423D6 /* RestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantVC.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		6D6C14E126037226002423D6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6D6C14E22603726E002423D6 /* addData.json */,
+				6D6C14E22603726E002423D6 /* appData.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 			files = (
 				6D30B71F25E7FA3D00F226EA /* LaunchScreen.storyboard in Resources */,
 				6D30B71C25E7FA3D00F226EA /* Assets.xcassets in Resources */,
-				6D6C14E32603726E002423D6 /* addData.json in Resources */,
+				6D6C14E32603726E002423D6 /* appData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
