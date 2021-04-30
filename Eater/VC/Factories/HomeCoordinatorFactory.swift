@@ -19,4 +19,8 @@ class HomeCoordinatorFactory {
         return webView
     }
     
+    
+    func makeUserLovedRestaurantVC() -> UserLovedRestaurantVC {
+        return UserLovedRestaurantVC()
+    }
 }

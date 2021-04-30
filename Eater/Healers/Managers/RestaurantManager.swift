@@ -48,6 +48,17 @@ class RestaurantManager {
         return realmRestaurant
     }
     
+    func getLovedRestaurantFromRealm() -> [RealmRestaurants]? {
+        guard let realm = try? Realm() else {return nil}
+        var realmElements = [RealmRestaurants]()
+        for element in realm.objects(RealmRestaurants.self) {
+            if element.isFavourite {
+                realmElements.append(element)
+            }
+        }
+        return realmElements
+    }
+    
     func updateFavouriteStatus(to newStatus: Bool, restaurantName: String) {
         do {
             let realm = try Realm()

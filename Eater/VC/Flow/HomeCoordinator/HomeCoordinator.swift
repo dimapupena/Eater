@@ -31,7 +31,14 @@ class HomeCoordinator : BaseCoordinator {
     }
     
     func openUserLovedPlaces() {
-        print("action")
+        let lovedVC = factory.makeUserLovedRestaurantVC()
+        lovedVC.backButtonAction = {[weak self] in
+            self?.router.popViewController(animated: true)
+        }
+        lovedVC.openWebViewItem = {[weak self] link in
+            self?.makeRestaurantWebView(link)
+        }
+        router.pushViewController(lovedVC, animated: true)
     }
     
     func makeRestaurantWebView(_ link: String?) {

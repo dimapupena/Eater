@@ -19,7 +19,7 @@
 		6D30B77425E8000500F226EA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B77325E8000500F226EA /* BaseCoordinator.swift */; };
 		6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78225E8059B00F226EA /* UIExtentions.swift */; };
 		6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78B25E806C900F226EA /* StandartActionButton.swift */; };
-		6D509374263828E4009E0B40 /* LovedRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D509373263828E4009E0B40 /* LovedRestaurants.swift */; };
+		6D509374263828E4009E0B40 /* UserLovedRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */; };
 		6D6C14E32603726E002423D6 /* appData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* appData.json */; };
 		6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */; };
 		6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */; };
@@ -76,7 +76,7 @@
 		6D30B77325E8000500F226EA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		6D30B78225E8059B00F226EA /* UIExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
 		6D30B78B25E806C900F226EA /* StandartActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartActionButton.swift; sourceTree = "<group>"; };
-		6D509373263828E4009E0B40 /* LovedRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovedRestaurants.swift; sourceTree = "<group>"; };
+		6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLovedRestaurantVC.swift; sourceTree = "<group>"; };
 		6D6C14E22603726E002423D6 /* appData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		6D5093722638286B009E0B40 /* LovedRestaurants */ = {
 			isa = PBXGroup;
 			children = (
-				6D509373263828E4009E0B40 /* LovedRestaurants.swift */,
+				6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */,
 			);
 			path = LovedRestaurants;
 			sourceTree = "<group>";
@@ -654,7 +654,7 @@
 				6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */,
 				6D8134EC2636D2FC0044C438 /* RealmHelper.swift in Sources */,
 				6D30B77425E8000500F226EA /* BaseCoordinator.swift in Sources */,
-				6D509374263828E4009E0B40 /* LovedRestaurants.swift in Sources */,
+				6D509374263828E4009E0B40 /* UserLovedRestaurantVC.swift in Sources */,
 				6DD2D3DA260A2F2E0028F206 /* ConfigManager.swift in Sources */,
 				6D30B71325E7FA3D00F226EA /* AppDelegate.swift in Sources */,
 				6D8644072604BAD300B1DBB1 /* RestaurantWebView.swift in Sources */,
