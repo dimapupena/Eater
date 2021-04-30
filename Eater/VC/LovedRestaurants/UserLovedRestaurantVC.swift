@@ -10,8 +10,6 @@ import UIKit
 
 class UserLovedRestaurantVC: UIViewController {
     
-    var lovedRestaurants: [RealmRestaurants]?
-    
     var openWebViewItem: ((_ link: String?) -> Void)?
     var backButtonAction: (() -> Void)?
     
@@ -57,7 +55,6 @@ class UserLovedRestaurantVC: UIViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(hexString: "#FFBEED")
-        lovedRestaurants = RestaurantManager.shared.getLovedRestaurantFromRealm()
         setupView()
     }
     
@@ -114,12 +111,12 @@ class UserLovedRestaurantVC: UIViewController {
 
 extension UserLovedRestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lovedRestaurants?.count ?? 0
+        return RestaurantManager.shared.getLovedRestaurantFromRealm()?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = restaurantCollection.dequeueReusableCell(withReuseIdentifier: "RestaurantViewCell", for: indexPath) as! RestaurantViewCell
-        if let restaurantdata = lovedRestaurants {
+        if let restaurantdata = RestaurantManager.shared.getLovedRestaurantFromRealm() {
             cell.setupViewParameters(restaurantdata[indexPath.row].name)
             print(indexPath.row)
         }
@@ -135,7 +132,7 @@ extension UserLovedRestaurantVC: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.openWebViewItem?(lovedRestaurants?[indexPath.row].restrauntUrl)
+        self.openWebViewItem?(RestaurantManager.shared.getLovedRestaurantFromRealm()?[indexPath.row].restrauntUrl)
     }
     
 }
