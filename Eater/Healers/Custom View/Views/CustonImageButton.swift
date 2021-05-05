@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
-class InformationButton: UIButton {
+class CustonImageButton: UIButton {
     
-    init() {
+    var imageName: String = ""
+    
+    init(imageName: String) {
         super.init(frame: .zero)
+        self.imageName = imageName
         setupSelf()
     }
     
@@ -20,7 +23,7 @@ class InformationButton: UIButton {
     }
     
     private func setupSelf() {
-        let image = UIImage(named: "detailedInformation")?.resize(targetSize: CGSize(width: 40, height: 40))
+        let image = UIImage(named: self.imageName)?.resize(targetSize: CGSize(width: 40, height: 40))
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setImage(image, for: .normal)

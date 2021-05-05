@@ -14,6 +14,10 @@ class MainCoordinatorFactory {
         return HeadViewController()
     }
     
+    func makeSettingsVC() -> SettingsVC {
+        return SettingsVC()
+    }
+    
     func makeImportantinformationVC(userInformation: UserUsefulInformation) -> ImportantInformationVC {
         return ImportantInformationVC(importantInformation: userInformation)
     }

@@ -11,6 +11,7 @@ import UIKit
 class HeadViewController: UIViewController {
     
     var onButtonClick: (() -> Void)?
+    var settingsButtonAction: (() -> Void)?
     var userInformationAction: (() -> Void)?
     
     let backgroundView: UIImageView = {
@@ -20,9 +21,15 @@ class HeadViewController: UIViewController {
         return view
     }()
     
-    let userInformationbutton: InformationButton = {
-        let button = InformationButton()
+    let userInformationButton: CustonImageButton = {
+        let button = CustonImageButton(imageName: "detailedInformation")
         button.addTarget(self, action: #selector(userInformationButtonClicked), for: .touchUpInside)
+        return button
+    }()
+    
+    let settingsButton: CustonImageButton = {
+        let button = CustonImageButton(imageName: "settings")
+        button.addTarget(self, action: #selector(settingsButtonClicked), for: .touchUpInside)
         return button
     }()
     
@@ -42,6 +49,7 @@ class HeadViewController: UIViewController {
     
     func setupViews() {
         setupBackgroundView()
+        setupSettingsButton()
         setupUserInformationButton()
         setupActionButton()
     }
@@ -62,15 +70,26 @@ class HeadViewController: UIViewController {
         actionButton.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
     }
     
-    func setupUserInformationButton() {
-        self.view.addSubview(userInformationbutton)
+    func setupSettingsButton() {
+        self.view.addSubview(settingsButton)
         
-        userInformationbutton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        userInformationbutton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        settingsButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        settingsButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+    }
+    
+    func setupUserInformationButton() {
+        self.view.addSubview(userInformationButton)
+        
+        userInformationButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        userInformationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
     }
     
     @objc func buttonClick() {
         self.onButtonClick?()
+    }
+    
+    @objc func settingsButtonClicked() {
+        self.settingsButtonAction?()
     }
     
     @objc func userInformationButtonClicked() {

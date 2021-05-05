@@ -33,6 +33,9 @@ class MainCoordinator: BaseCoordinator {
         vc.onButtonClick = {
             self.makeHomeFlow()
         }
+        vc.settingsButtonAction = { [weak self] in
+            self?.makeSettingsVC()
+        }
         vc.userInformationAction = { [weak self] in
             self?.makeInformationVC(info: UserUsefulInformation(title: "some title", description: "some description"))
         }
@@ -41,6 +44,14 @@ class MainCoordinator: BaseCoordinator {
     
     func makeInformationVC(info: UserUsefulInformation) {
         let informationVC = factory.makeImportantinformationVC(userInformation: info)
+        informationVC.backButtonAction = { [weak self] in
+            self?.router.popViewController(animated: true)
+        }
+        router.pushViewController(informationVC, animated: true)
+    }
+    
+    func makeSettingsVC() {
+        let informationVC = factory.makeSettingsVC()
         informationVC.backButtonAction = { [weak self] in
             self?.router.popViewController(animated: true)
         }
