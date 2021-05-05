@@ -103,6 +103,19 @@ class UserLovedRestaurantVC: UIViewController {
         restaurantCollection.collectionViewLayout = layout
     }
     
+    func createOpenLinkAlert(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Whith way you want to use", message: "Please choose one of the ways for open restaurant website", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "In this App", style: .default, handler: { (action) in
+            self.openWebViewItem?(RestaurantManager.shared.getLovedRestaurantFromRealm()?[indexPath.row].restrauntUrl)
+        }))
+        alert.addAction(UIAlertAction(title: "In Web browser", style: .default, handler: { (action) in
+            guard let restaurantUrlString = RestaurantManager.shared.getLovedRestaurantFromRealm()?[indexPath.row].restrauntUrl, let restaurantUrl = URL(string: restaurantUrlString) else { return }
+            UIApplication.shared.open(restaurantUrl)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func backButtonClicked() {
         self.backButtonAction?()
     }
@@ -132,6 +145,7 @@ extension UserLovedRestaurantVC: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        createOpenLinkAlert(indexPath)
         self.openWebViewItem?(RestaurantManager.shared.getLovedRestaurantFromRealm()?[indexPath.row].restrauntUrl)
     }
     

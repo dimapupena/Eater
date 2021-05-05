@@ -136,6 +136,19 @@ class RestaurantVC: UIViewController {
         restaurantCollection.collectionViewLayout = layout
     }
     
+    func createOpenLinkAlert(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Whith way you want to use", message: "Please choose one of the ways for open restaurant website", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "In this App", style: .default, handler: { (action) in
+            self.openWebViewItem?(self.restaurantdata?[indexPath.row].url)
+        }))
+        alert.addAction(UIAlertAction(title: "In Web browser", style: .default, handler: { (action) in
+            guard let restaurantUrlString = self.restaurantdata?[indexPath.row].url, let restaurantUrl = URL(string: restaurantUrlString) else { return }
+            UIApplication.shared.open(restaurantUrl)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func backButtonClicked() {
         self.backButtonAction?()
     }
@@ -169,7 +182,6 @@ extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.openWebViewItem?(restaurantdata?[indexPath.row].url)
+        createOpenLinkAlert(indexPath)
     }
-    
 }

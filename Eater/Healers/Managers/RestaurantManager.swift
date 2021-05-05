@@ -13,6 +13,7 @@ class RestaurantManager {
     
     static var shared: RestaurantManager = RestaurantManager()
     
+    // update with first
     func updateUserRestaurants() {
         guard let restaurants = ConfigManager.sharer.appConfiguration?.restaurants else { return }
         let realm = try! Realm()
