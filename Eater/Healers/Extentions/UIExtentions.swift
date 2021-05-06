@@ -117,3 +117,29 @@ extension UIColor {
     
     
 }
+
+
+extension UIViewController {
+    func showLoaderView() {
+        DispatchQueue.main.async {
+            if self.view.subviews.filter({return $0 as? LoaderView != nil }).count == 0 {
+                self.setupLoaderVC()
+            }
+        }
+    }
+    
+    private func setupLoaderVC() {
+        let view = LoaderView()
+        self.view.addSubview(view)
+        view.setZeroConstraits(with: self.view)
+    }
+    
+    func hideLoaderView() {
+        DispatchQueue.main.async {
+            let loaders = self.view.subviews.filter{$0 is LoaderView}
+            loaders.forEach { (vc) in
+                vc.removeFromSuperview()
+            }
+        }
+    }
+}

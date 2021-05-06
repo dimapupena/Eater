@@ -33,6 +33,7 @@ class RestaurantWebView: UIViewController, WKNavigationDelegate {
     }
     
     func setupView(_ link: String) {
+        self.showLoaderView()
         updateWebLink(link)
         
         setupBackButton()
@@ -44,6 +45,10 @@ class RestaurantWebView: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
     }
 
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.hideLoaderView()
+    }
+    
     private func setupBackButton() {
         self.view.addSubview(backButton)
 
