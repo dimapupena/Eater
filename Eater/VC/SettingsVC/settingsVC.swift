@@ -19,7 +19,7 @@ class SettingsVC: UIViewController {
     }()
     
     override func viewDidLoad() {
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .youtubeRed
         setupBackButton()
     }
     

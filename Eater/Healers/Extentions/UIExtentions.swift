@@ -89,11 +89,6 @@ extension UIColor {
     static let seemuBlue = UIColor(hex: 0x00adf7)
     static let youtubeRed = UIColor(hex: 0xf80000)
     static let transparentBlack = UIColor(hex: 0x000000, a: 0.5)
-    static let iqosBlack = UIColor(red: 39, green: 42, blue: 51)
-    static let iqosRed = UIColor(red: 229, green: 82, blue: 82)
-    static let iqosGray = UIColor(red: 115, green: 117, blue: 124)
-    static let iqosLightGray = UIColor(hex: 0xe8e8e8)
-    static let iqosGold = UIColor(red: 243, green: 237, blue: 232)
     
     // Create a UIColor from RGB
     convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
