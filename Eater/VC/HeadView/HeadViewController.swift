@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import UserNotifications
 
 class HeadViewController: UIViewController {
     
@@ -43,7 +45,7 @@ class HeadViewController: UIViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
-        
+        AppLocationManager.shared.initalLocationFlow()
         setupViews()
     }
     

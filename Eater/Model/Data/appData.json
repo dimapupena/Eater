@@ -8,7 +8,9 @@
             "hearePhoto": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://www.tarantino-family.com/delivery/"
+            "url": "https://www.tarantino-family.com/delivery/",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
         {
             "name": "TITLE 2",
@@ -18,7 +20,9 @@
             "hearePhoto": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://ilmolino.ua/delivery.html"
+            "url": "https://ilmolino.ua/delivery.html",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
         {
             "name": "TITLE 3",
@@ -28,7 +32,9 @@
             "hearePhoto": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://dominos.ua/uk/kyiv/"
+            "url": "https://dominos.ua/uk/kyiv/",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
         {
             "name": "TITLE 4",
@@ -48,7 +54,9 @@
             "hearePhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoIuBJ9NqbS523AnsZ1QxXKvb97--6U9OEw&usqp=CAU",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://mafia.ua/kiev"
+            "url": "https://mafia.ua/kiev",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
         {
             "name": "TITLE 6",
@@ -58,7 +66,9 @@
             "hearePhoto": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://mistercat.com.ua"
+            "url": "https://mistercat.com.ua",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
         {
             "name": "TITLE 7",
@@ -68,7 +78,9 @@
             "hearePhoto": "https://cnet2.cbsistatic.com/img/-e95qclc6pwSnGE2YccC2oLDW_8=/1200x675/2020/04/16/7d6d8ed2-e10c-4f91-b2dd-74fae951c6d8/bazaart-edit-app.jpg",
             "address": "adress 1",
             "rating" : "6.5",
-            "url": "https://www.mcdonalds.com/ua/uk-ua.html"
+            "url": "https://www.mcdonalds.com/ua/uk-ua.html",
+            "longitude": 50.454372,
+            "latitude": 30.388740
         },
     ]
 }

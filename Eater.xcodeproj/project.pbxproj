@@ -22,6 +22,8 @@
 		6D509374263828E4009E0B40 /* UserLovedRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */; };
 		6D6BEABE2642D8EA006E01C7 /* settingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEABD2642D8EA006E01C7 /* settingsVC.swift */; };
 		6D6BEAD22642E3C5006E01C7 /* LoaderCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEAD12642E3C5006E01C7 /* LoaderCircleView.swift */; };
+		6D6BEB0626453D30006E01C7 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB0526453D30006E01C7 /* LocationModel.swift */; };
+		6D6BEB2026454F50006E01C7 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */; };
 		6D6C14E32603726E002423D6 /* appData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* appData.json */; };
 		6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */; };
 		6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */; };
@@ -81,6 +83,8 @@
 		6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLovedRestaurantVC.swift; sourceTree = "<group>"; };
 		6D6BEABD2642D8EA006E01C7 /* settingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsVC.swift; sourceTree = "<group>"; };
 		6D6BEAD12642E3C5006E01C7 /* LoaderCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCircleView.swift; sourceTree = "<group>"; };
+		6D6BEB0526453D30006E01C7 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
 		6D6C14E22603726E002423D6 /* appData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		6D6C14ED26037B7B002423D6 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		6D6C14F526037BD7002423D6 /* HomeCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				6D7F8B482636FB7B00D8FEDA /* RestaurantManager.swift */,
+				6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 		6DD2D3D2260A29C00028F206 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				6D6BEB0526453D30006E01C7 /* LocationModel.swift */,
 				6DD2D3D3260A29F30028F206 /* RestaurantContent.swift */,
 			);
 			path = Structs;
@@ -666,12 +672,14 @@
 				6D8134D62636B6180044C438 /* RealmRestaurants.swift in Sources */,
 				6D30B76025E7FEB300F226EA /* HeadViewController.swift in Sources */,
 				6D6C150526039051002423D6 /* RestaurantViewCell.swift in Sources */,
+				6D6BEB2026454F50006E01C7 /* AppLocationManager.swift in Sources */,
 				6DA800212612225C004311C6 /* RestaurantView.swift in Sources */,
 				6D6C14FF26037C3D002423D6 /* RestaurantVC.swift in Sources */,
 				6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */,
 				6D74D00B26331506007A0C56 /* CustonImageButton.swift in Sources */,
 				6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */,
 				6D30B75225E7FD9B00F226EA /* MainCoordinator.swift in Sources */,
+				6D6BEB0626453D30006E01C7 /* LocationModel.swift in Sources */,
 				6D30B75825E7FE0A00F226EA /* Coordinator.swift in Sources */,
 				6D30B78325E8059B00F226EA /* UIExtentions.swift in Sources */,
 				6D8134EC2636D2FC0044C438 /* RealmHelper.swift in Sources */,
@@ -853,8 +861,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AB5M8RU444;
+				DEVELOPMENT_TEAM = 799K37S9XB;
 				INFOPLIST_FILE = Eater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -862,6 +871,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Dmytro-Pupena.Eater";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -874,7 +884,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AB5M8RU444;
+				DEVELOPMENT_TEAM = 799K37S9XB;
 				INFOPLIST_FILE = Eater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
