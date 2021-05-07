@@ -19,6 +19,8 @@ class RealmRestaurants: Object {
     @objc dynamic var address: String?
     @objc dynamic var rating: String?
     @objc dynamic var restrauntUrl: String?
+    var latitude = RealmOptional<Double>()
+    var longitude = RealmOptional<Double>()
     @objc dynamic var isFavourite: Bool = false
     
     override class func primaryKey() -> String? {
@@ -35,6 +37,8 @@ class RealmRestaurants: Object {
         self.address = data.address
         self.rating = data.rating
         self.restrauntUrl = data.url
+        self.latitude.value = data.latitude
+        self.longitude.value = data.longitude
         self.isFavourite = data.isFavourite ?? false
     }
 }

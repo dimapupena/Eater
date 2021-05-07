@@ -22,4 +22,6 @@ struct RestaurantContent: Decodable {
     let rating      : String
     let url         : String
     let isFavourite : Bool?
+    let latitude    : Double?
+    let longitude   : Double?
 }

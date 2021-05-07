@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 protocol RestaurantViewDelegate: class {
     func bookStatusClicked(to newValue: Bool)
+    func getLocationClicked() -> LocationModel?
 }
 
 class RestaurantView: UIView {
@@ -81,6 +83,13 @@ class RestaurantView: UIView {
         return label
     }()
     
+    private lazy var getLocationImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "getLocation")
+        return imageView
+    }()
+    
     private lazy var ratingLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -126,6 +135,7 @@ class RestaurantView: UIView {
         setSheffLabel()
         setAddressLabel()
         setRatingLabel()
+        setGetDirectionImage()
     }
     
     private func setLogoImage() {
@@ -145,7 +155,7 @@ class RestaurantView: UIView {
         bookMark.widthAnchor.constraint(equalToConstant: 40).isActive = true
         bookMark.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(bokkStatusChanged))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(bookStatusChanged))
         bookMark.isUserInteractionEnabled = true
         bookMark.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -194,14 +204,39 @@ class RestaurantView: UIView {
         
         ratingLabel.topAnchor.constraint(equalTo: sheffLabel.topAnchor).isActive = true
         ratingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        ratingLabel.bottomAnchor.constraint(equalTo: addressLabel.bottomAnchor).isActive = true
+        ratingLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         ratingLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        ratingLabel.leadingAnchor.constraint(equalTo: sheffLabel.trailingAnchor).isActive = true
     }
     
-    @objc func bokkStatusChanged()
+    private func setGetDirectionImage() {
+        addSubview(getLocationImage)
+        
+        getLocationImage.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 5).isActive = true
+        getLocationImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        getLocationImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        getLocationImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(getDirectionAction))
+        getLocationImage.isUserInteractionEnabled = true
+        getLocationImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    
+    @objc func bookStatusChanged()
     {
         self.isFavourite = !self.isFavourite
         delegate?.bookStatusClicked(to: self.isFavourite)
+    }
+    
+    @objc func getDirectionAction()
+    {
+        guard let coordinates = delegate?.getLocationClicked() else { return }
+        openMapForPlace(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    }
+    
+    func openMapForPlace(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let coodinate =  CLLocationCoordinate2DMake(latitude, longitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coodinate, addressDictionary: nil))
+        mapItem.name = "Test"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
 }

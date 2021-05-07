@@ -10,10 +10,8 @@ import UIKit
 
 class RestaurantViewCell: UICollectionViewCell {
     
-    var restaurantName: String = ""
-    
     var restaurantView: RestaurantView = RestaurantView()
-    var restaurantModel: RestaurantCellModel = RestaurantCellModel()
+    var restaurantViewModel: RestaurantCellViewModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +23,12 @@ class RestaurantViewCell: UICollectionViewCell {
     }
     
     func setupViewParameters(_ restaurantName: String) {
-        self.restaurantName = restaurantName
+        restaurantViewModel = RestaurantCellViewModel(restaurantName)
         setupRestaurantView()
     }
     
     func setupRestaurantView() {
-        guard let rastaurant = RestaurantManager.shared.getRestaurantFromRealm(restaurantName: restaurantName) else { return }
+        guard let rastaurant = restaurantViewModel.getRestaurant() else { return }
         restaurantView.setupViewParameters(rastaurant)
         self.contentView.addSubview(restaurantView)
         restaurantView.setZeroConstraits(with: self.contentView)
@@ -38,7 +36,11 @@ class RestaurantViewCell: UICollectionViewCell {
 }
 
 extension RestaurantViewCell: RestaurantViewDelegate {
+    func getLocationClicked() -> LocationModel? {
+        return restaurantViewModel.getCoordinatesRestaurant()
+    }
+    
     func bookStatusClicked(to newValue: Bool) {
-        restaurantModel.updateIsFaforiteStatus(to: newValue, restaurantName: self.restaurantName)
+        restaurantViewModel.updateIsFaforiteStatus(to: newValue)
     }
 }
