@@ -173,7 +173,7 @@ class RestaurantView: UIView {
         
         descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: bookMark.leadingAnchor,constant: -5).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
     }
     
     private func setHeadImage() {
@@ -181,7 +181,8 @@ class RestaurantView: UIView {
         
         headImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         headImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor , constant: 20).isActive = true
-        headImage.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        headImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        headImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
     
     private func setSheffLabel() {
@@ -196,6 +197,7 @@ class RestaurantView: UIView {
         addSubview(addressLabel)
         
         addressLabel.topAnchor.constraint(equalTo: sheffLabel.bottomAnchor).isActive = true
+        addressLabel.trailingAnchor.constraint(equalTo: sheffLabel.trailingAnchor).isActive = true
         addressLabel.leadingAnchor.constraint(equalTo: sheffLabel.leadingAnchor).isActive = true
     }
     
@@ -204,8 +206,8 @@ class RestaurantView: UIView {
         
         ratingLabel.topAnchor.constraint(equalTo: sheffLabel.topAnchor).isActive = true
         ratingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        ratingLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        ratingLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        ratingLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        ratingLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     private func setGetDirectionImage() {
@@ -213,6 +215,7 @@ class RestaurantView: UIView {
         
         getLocationImage.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 5).isActive = true
         getLocationImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        getLocationImage.bottomAnchor.constraint(greaterThanOrEqualTo: self.bottomAnchor).isActive = true
         getLocationImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
         getLocationImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(getDirectionAction))

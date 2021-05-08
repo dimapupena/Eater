@@ -29,7 +29,7 @@ class LoaderView: UIView {
     
     private func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .blue
         self.alpha = 0.5
         
         self.addSubview(loaderCircleView)
@@ -44,7 +44,12 @@ class LoaderView: UIView {
         UIView.animate(withDuration: 1, delay: 0, options: .repeat) {
             self.loaderCircleView.rotate360Degrees()
         } completion: { (success) in
-            print("animation success")
+            if success {
+                print("animation success")
+            } else {
+                print("animation error")
+            }
+
         }
 
     }

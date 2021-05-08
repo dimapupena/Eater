@@ -125,7 +125,7 @@ class RestaurantVC: UIViewController {
         view.addSubview(restaurantCollection)
         
         restaurantCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        restaurantCollection.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30).isActive = true
+        restaurantCollection.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5).isActive = true
         restaurantCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         restaurantCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         self.view.layoutIfNeeded()
