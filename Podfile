@@ -7,6 +7,7 @@ target 'Eater' do
 
   # Pods for Eater
   pod 'RealmSwift'
+  pod 'Firebase/Analytics'
 
   target 'EaterTests' do
     inherit! :search_paths
