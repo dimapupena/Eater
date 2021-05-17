@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class UserLovedRestaurantVC: UIViewController {
+class UserLovedRestaurantVC: UIViewController, GAEventTrackable {
     
     var openWebViewItem: ((_ link: String?) -> Void)?
     var backButtonAction: (() -> Void)?
@@ -56,6 +56,10 @@ class UserLovedRestaurantVC: UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(hexString: "#FFBEED")
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        openScreenEvent(screenTitle: GAOpenScreenTitles.importantInformationVC.rawValue)
     }
     
     func setupView() {

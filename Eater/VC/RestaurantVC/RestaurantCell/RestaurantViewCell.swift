@@ -37,10 +37,12 @@ class RestaurantViewCell: UICollectionViewCell {
 
 extension RestaurantViewCell: RestaurantViewDelegate {
     func getLocationClicked() -> LocationModel? {
+        restaurantViewModel.GAGetDiractionEvent()
         return restaurantViewModel.getCoordinatesRestaurant()
     }
     
     func bookStatusClicked(to newValue: Bool) {
+        restaurantViewModel.GAMarkAsLovedEvent(to: newValue)
         restaurantViewModel.updateIsFaforiteStatus(to: newValue)
     }
 }

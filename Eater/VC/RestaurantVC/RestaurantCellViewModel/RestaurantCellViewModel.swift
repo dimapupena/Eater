@@ -30,3 +30,16 @@ class RestaurantCellViewModel {
     }
     
 }
+
+//MARK: Google Analytics
+extension RestaurantCellViewModel {
+    func GAMarkAsLovedEvent(to newValue: Bool) {
+        guard let restaurant = getRestaurant() else { return }
+        GATraker.shared.markAsUserLoved(eventTitle: GAEventsTitle.markRestaurantAsLoved.rawValue, restaurantTitle: restaurant.name, restaurantLink: restaurant.restrauntUrl ?? "", restaurantRating: Double(restaurant.rating ?? "None"), isLoved: newValue)
+    }
+    
+    func GAGetDiractionEvent() {
+        guard let restaurant = getRestaurant() else { return }
+        GATraker.shared.getDirectionToRestaurant(eventTitle: restaurant.name, restaurantTitle: restaurant.name, restaurantLatitude: restaurant.latitude.value, restaurantLongitude: restaurant.longitude.value)
+    }
+}

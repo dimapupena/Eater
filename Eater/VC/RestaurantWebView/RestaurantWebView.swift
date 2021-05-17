@@ -8,7 +8,7 @@
 import Foundation
 import WebKit
 
-class RestaurantWebView: UIViewController, WKNavigationDelegate {
+class RestaurantWebView: UIViewController, WKNavigationDelegate, GAEventTrackable {
     
     var onFinish: (() -> Void)?
 
@@ -30,6 +30,10 @@ class RestaurantWebView: UIViewController, WKNavigationDelegate {
         self.view.backgroundColor = .white
 
         webView.navigationDelegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        openScreenEvent(screenTitle: GAOpenScreenTitles.restaurantWebView.rawValue)
     }
     
     func setupView(_ link: String) {

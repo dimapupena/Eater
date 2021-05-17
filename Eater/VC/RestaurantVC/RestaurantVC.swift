@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RestaurantVC: UIViewController {
+class RestaurantVC: UIViewController, GAEventTrackable {
     
     var restaurantdata: [RestaurantContent]? {
         get {
@@ -77,6 +77,10 @@ class RestaurantVC: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        openScreenEvent(screenTitle: GAOpenScreenTitles.restaurantVC.rawValue)
+    }
+    
     func setupView() {
         setupBackButton()
         setupLovedRestaurant()
@@ -137,15 +141,20 @@ class RestaurantVC: UIViewController {
     }
     
     func createOpenLinkAlert(_ indexPath: IndexPath) {
+        guard let restaurant = self.restaurantdata?[indexPath.row] else { return }
         let alert = UIAlertController(title: "Whith way you want to use", message: "Please choose one of the ways for open restaurant website", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "In this App", style: .default, handler: { (action) in
-            self.openWebViewItem?(self.restaurantdata?[indexPath.row].url)
+            self.openRestaurantWebSite(restaurantTitle: restaurant.name, restaurantLink: restaurant.url, inApp: true)
+            self.openWebViewItem?(restaurant.url)
         }))
         alert.addAction(UIAlertAction(title: "In Web browser", style: .default, handler: { (action) in
-            guard let restaurantUrlString = self.restaurantdata?[indexPath.row].url, let restaurantUrl = URL(string: restaurantUrlString) else { return }
+            guard let restaurantUrl = URL(string: restaurant.url) else { return }
+            self.openRestaurantWebSite(restaurantTitle: restaurant.name, restaurantLink: restaurant.url, inApp: false)
             UIApplication.shared.open(restaurantUrl)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
     }
     

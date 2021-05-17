@@ -18,7 +18,7 @@ struct UserUsefulInformation {
     }
 }
 
-class ImportantInformationVC: UIViewController {
+class ImportantInformationVC: UIViewController, GAEventTrackable {
     
     var importantInformation: UserUsefulInformation
     
@@ -64,6 +64,10 @@ class ImportantInformationVC: UIViewController {
         setupBackButton()
         setupTitleView()
         setupTextView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        openScreenEvent(screenTitle: GAOpenScreenTitles.importantInformationVC.rawValue)
     }
     
     private func setupBackButton() {

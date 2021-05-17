@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import UserNotifications
 
-class HeadViewController: UIViewController {
+class HeadViewController: UIViewController, GAEventTrackable {
     
     var onButtonClick: (() -> Void)?
     var settingsButtonAction: (() -> Void)?
@@ -47,6 +47,10 @@ class HeadViewController: UIViewController {
         self.view.backgroundColor = .white
         AppLocationManager.shared.initalLocationFlow()
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        openScreenEvent(screenTitle: GAOpenScreenTitles.headViewController.rawValue)
     }
     
     func setupViews() {
