@@ -218,11 +218,19 @@ class RestaurantView: UIView {
         getLocationImage.bottomAnchor.constraint(greaterThanOrEqualTo: self.bottomAnchor).isActive = true
         getLocationImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
         getLocationImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(getDirectionAction))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(createOpenDirectionAlert))
         getLocationImage.isUserInteractionEnabled = true
         getLocationImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    @objc private func createOpenDirectionAlert() {
+        let alert = UIAlertController(title: "Do you want to get direction to restaurant", message: "You will get way to restaurant. It can help you to understand where restaurant is and how many time you need to get there.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Open map", style: .default, handler: { (action) in
+            self.getDirectionAction()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
     
     @objc func bookStatusChanged()
     {
@@ -230,13 +238,13 @@ class RestaurantView: UIView {
         delegate?.bookStatusClicked(to: self.isFavourite)
     }
     
-    @objc func getDirectionAction()
+    @objc private func getDirectionAction()
     {
         guard let coordinates = delegate?.getLocationClicked() else { return }
         openMapForPlace(latitude: coordinates.latitude, longitude: coordinates.longitude)
     }
     
-    func openMapForPlace(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    private func openMapForPlace(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let coodinate =  CLLocationCoordinate2DMake(latitude, longitude)
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coodinate, addressDictionary: nil))
         mapItem.name = "Test"
