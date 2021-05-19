@@ -14,8 +14,8 @@ class MainCoordinatorFactory {
         return HeadViewController()
     }
     
-    func makeSettingsVC() -> SettingsVC {
-        return SettingsVC()
+    func makeSettingsVC() -> SettingsViewController {
+        return SettingsViewController()
     }
     
     func makeBackgroundAppVC() -> BackgroundAppVC {
