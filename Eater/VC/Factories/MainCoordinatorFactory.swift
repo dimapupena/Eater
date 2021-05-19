@@ -18,6 +18,10 @@ class MainCoordinatorFactory {
         return SettingsVC()
     }
     
+    func makeBackgroundAppVC() -> BackgroundAppVC {
+        return BackgroundAppVC()
+    }
+    
     func makeImportantinformationVC(userInformation: UserUsefulInformation) -> ImportantInformationVC {
         return ImportantInformationVC(importantInformation: userInformation)
     }

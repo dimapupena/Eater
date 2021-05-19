@@ -55,6 +55,10 @@ class MainCoordinator: BaseCoordinator {
         informationVC.backButtonAction = { [weak self] in
             self?.router.popViewController(animated: true)
         }
+        informationVC.changeBackgroundAction = { [weak self] in
+            guard let backgroundVC = self?.factory.makeBackgroundAppVC() else { return }
+            informationVC.present(backgroundVC, animated: true, completion: nil)
+        }
         router.pushViewController(informationVC, animated: true)
     }
     

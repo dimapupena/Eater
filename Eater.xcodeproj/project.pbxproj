@@ -44,6 +44,7 @@
 		6DF36CBF2652622100386169 /* GAEventTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF36CBE2652622100386169 /* GAEventTrackable.swift */; };
 		6DF36CC42652693B00386169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF36CC32652693B00386169 /* GoogleService-Info.plist */; };
 		6DF36CCA26526A4100386169 /* GATexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF36CC926526A4100386169 /* GATexts.swift */; };
+		6DF36D052653FAAB00386169 /* BackgroundAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF36D042653FAAB00386169 /* BackgroundAppVC.swift */; };
 		7B1F71DCC39220ED5D1C645B /* Pods_EaterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09858176D7745CA77A786715 /* Pods_EaterTests.framework */; };
 		B2D2C1F125B105B85BB905DA /* Pods_Eater_EaterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E79CF904AEB740015312D61 /* Pods_Eater_EaterUITests.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		6DF36CBE2652622100386169 /* GAEventTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAEventTrackable.swift; sourceTree = "<group>"; };
 		6DF36CC32652693B00386169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DF36CC926526A4100386169 /* GATexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATexts.swift; sourceTree = "<group>"; };
+		6DF36D042653FAAB00386169 /* BackgroundAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAppVC.swift; sourceTree = "<group>"; };
 		81A6EB9294C2F69300F944B7 /* Pods_Eater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE463AB644489B4E9088017 /* Pods-Eater-EaterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eater-EaterUITests.release.xcconfig"; path = "Target Support Files/Pods-Eater-EaterUITests/Pods-Eater-EaterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8E79CF904AEB740015312D61 /* Pods_Eater_EaterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eater_EaterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +323,7 @@
 		6D6BEABC2642D897006E01C7 /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
+				6DF36D032653FA0600386169 /* Settings */,
 				6D6BEABD2642D8EA006E01C7 /* SettingsVC.swift */,
 			);
 			path = SettingsVC;
@@ -446,6 +449,14 @@
 				6DF36CC926526A4100386169 /* GATexts.swift */,
 			);
 			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		6DF36D032653FA0600386169 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6DF36D042653FAAB00386169 /* BackgroundAppVC.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,6 +699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D30B76E25E7FF2C00F226EA /* MainCoordinatorFactory.swift in Sources */,
+				6DF36D052653FAAB00386169 /* BackgroundAppVC.swift in Sources */,
 				6DD2D3D4260A29F30028F206 /* RestaurantContent.swift in Sources */,
 				6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */,
 				6D8134D62636B6180044C438 /* RealmRestaurants.swift in Sources */,
