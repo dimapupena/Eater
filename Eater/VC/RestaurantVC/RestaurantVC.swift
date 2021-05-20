@@ -73,7 +73,7 @@ class RestaurantVC: UIViewController, GAEventTrackable {
     }()
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor(hexString: "#FFBEED")
+        self.view.backgroundColor = UIColor.backgroundColor.color
         setupView()
     }
     

@@ -64,6 +64,8 @@ extension UIImage {
 
 extension UIColor {
     
+    static var backgroundColor: BackgroundColor = BackgroundColor(red: 255, green: 190, blue: 237, alpha: 1.0)
+    
     convenience init(hexString: String) {
         var hex = hexString.hasPrefix("#") ? String(hexString.dropFirst()) : hexString
         
@@ -100,6 +102,15 @@ extension UIColor {
         )
     }
     
+    convenience init(red: Float, green: Float, blue: Float, a: CGFloat = 1.0) {
+        self.init(
+            red: CGFloat(red) / 255.0,
+            green: CGFloat(green) / 255.0,
+            blue: CGFloat(blue) / 255.0,
+            alpha: a
+        )
+    }
+    
     // Create a UIColor from a hex value (E.g 0x000000)
     convenience init(hex: Int, a: CGFloat = 1.0) {
         self.init(
@@ -110,6 +121,24 @@ extension UIColor {
         )
     }
     
+    
+}
+
+class BackgroundColor {
+    
+    var color: UIColor
+    var redPart: Float
+    var greenPart: Float
+    var bluePart: Float
+    var alpha: CGFloat = 1.0
+    
+    init(red: Float, green: Float, blue: Float, alpha: CGFloat = 1.0) {
+        self.color = UIColor(red: red, green: green, blue: blue, a: alpha)
+        self.redPart = red
+        self.greenPart = green
+        self.bluePart = blue
+        self.alpha = alpha
+    }
     
 }
 
