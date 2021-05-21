@@ -130,16 +130,19 @@ class BackgroundAppVC: UIViewController {
     @objc private func redPartChanged() {
         settingsRedSlider.customSlider.value = settingsRedSlider.customSlider.value
         updateTextBackcolorView(red: settingsRedSlider.customSlider.value)
+        UIColor.backgroundColor.redPart = settingsRedSlider.customSlider.value
     }
     
     @objc private func greenPartChanged() {
         settingsGreenSlider.customSlider.value = settingsGreenSlider.customSlider.value
         updateTextBackcolorView(green: settingsGreenSlider.customSlider.value)
+        UIColor.backgroundColor.greenPart = settingsGreenSlider.customSlider.value
     }
     
     @objc private func bluePartChanged() {
         settingsBlueSlider.customSlider.value = settingsBlueSlider.customSlider.value
         updateTextBackcolorView(blue: settingsBlueSlider.customSlider.value)
+        UIColor.backgroundColor.bluePart = settingsBlueSlider.customSlider.value
     }
     
     @objc private func saveBackgroundColorClick() {
