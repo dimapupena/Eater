@@ -21,7 +21,9 @@ class SettingsViewController: UIViewController, GAEventTrackable {
     
     private let changeBackgroundButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
+        button.backgroundColor = UIColor(red: 99, green: 147, blue: 191)
+        button.setTitle("Change main background", for: .normal)
+        button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(changeBackgroundClicked), for: .touchUpInside)
         return button
