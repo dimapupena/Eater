@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+class DeviceSize {
+    static let width = UIScreen.main.bounds.size.width
+    static let height = UIScreen.main.bounds.size.height
+}
+
 extension UIView {
     func setZeroConstraits(with parentView : UIView) {
         if !self.translatesAutoresizingMaskIntoConstraints {

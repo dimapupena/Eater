@@ -30,4 +30,8 @@ class MainCoordinatorFactory {
         return HomeCoordinator(router: router, factory: factory)
     }
     
+    func makeLoginVC() -> LoginVC {
+        return LoginVC()
+    }
+    
 }

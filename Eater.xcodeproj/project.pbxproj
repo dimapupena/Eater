@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0371ED18960537B48912C125 /* Pods_Eater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6EB9294C2F69300F944B7 /* Pods_Eater.framework */; };
 		6D30B71325E7FA3D00F226EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B71225E7FA3D00F226EA /* AppDelegate.swift */; };
 		6D30B71525E7FA3D00F226EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B71425E7FA3D00F226EA /* SceneDelegate.swift */; };
 		6D30B71C25E7FA3D00F226EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D30B71B25E7FA3D00F226EA /* Assets.xcassets */; };
@@ -21,6 +20,11 @@
 		6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B78B25E806C900F226EA /* StandartActionButton.swift */; };
 		6D509374263828E4009E0B40 /* UserLovedRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */; };
 		6D64A57726554DB7003CF3C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A57626554DB7003CF3C8 /* SettingsViewController.swift */; };
+		6D64A57C2657B3E4003CF3C8 /* Pods_Eater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6EB9294C2F69300F944B7 /* Pods_Eater.framework */; };
+		6D64A57D2657B3E4003CF3C8 /* Pods_Eater.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6EB9294C2F69300F944B7 /* Pods_Eater.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6D64A5802657B546003CF3C8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A57F2657B546003CF3C8 /* LoginVC.swift */; };
+		6D64A5842657B592003CF3C8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A5832657B592003CF3C8 /* LoginViewModel.swift */; };
+		6D64A5892657F5FF003CF3C8 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A5882657F5FF003CF3C8 /* UserManager.swift */; };
 		6D6BEAD22642E3C5006E01C7 /* LoaderCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEAD12642E3C5006E01C7 /* LoaderCircleView.swift */; };
 		6D6BEB0626453D30006E01C7 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB0526453D30006E01C7 /* LocationModel.swift */; };
 		6D6BEB2026454F50006E01C7 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */; };
@@ -66,6 +70,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6D64A57B2657B3DB003CF3C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6D64A57D2657B3E4003CF3C8 /* Pods_Eater.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		09858176D7745CA77A786715 /* Pods_EaterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EaterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B27182083CBC2A127D3E092 /* Pods-Eater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eater.debug.xcconfig"; path = "Target Support Files/Pods-Eater/Pods-Eater.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +105,10 @@
 		6D30B78B25E806C900F226EA /* StandartActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartActionButton.swift; sourceTree = "<group>"; };
 		6D509373263828E4009E0B40 /* UserLovedRestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLovedRestaurantVC.swift; sourceTree = "<group>"; };
 		6D64A57626554DB7003CF3C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6D64A5782657B3DB003CF3C8 /* FirebaseStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D64A57F2657B546003CF3C8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6D64A5832657B592003CF3C8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		6D64A5882657F5FF003CF3C8 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		6D6BEAD12642E3C5006E01C7 /* LoaderCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCircleView.swift; sourceTree = "<group>"; };
 		6D6BEB0526453D30006E01C7 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
@@ -124,7 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0371ED18960537B48912C125 /* Pods_Eater.framework in Frameworks */,
+				6D64A57C2657B3E4003CF3C8 /* Pods_Eater.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +185,7 @@
 		59600681DB53260ED10FDCE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D64A5782657B3DB003CF3C8 /* FirebaseStorage.framework */,
 				81A6EB9294C2F69300F944B7 /* Pods_Eater.framework */,
 				8E79CF904AEB740015312D61 /* Pods_Eater_EaterUITests.framework */,
 				09858176D7745CA77A786715 /* Pods_EaterTests.framework */,
@@ -208,6 +231,7 @@
 		6D30B74E25E7FD3600F226EA /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				6D64A57E2657B523003CF3C8 /* LoginVC */,
 				6D6BEABC2642D897006E01C7 /* SettingsVC */,
 				6D5093722638286B009E0B40 /* LovedRestaurants */,
 				6DCBCBB02632FF3000BD0F2F /* ImportantInformationVC */,
@@ -320,6 +344,15 @@
 			path = LovedRestaurants;
 			sourceTree = "<group>";
 		};
+		6D64A57E2657B523003CF3C8 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				6D64A57F2657B546003CF3C8 /* LoginVC.swift */,
+				6D64A5832657B592003CF3C8 /* LoginViewModel.swift */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
 		6D6BEABC2642D897006E01C7 /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +413,7 @@
 			children = (
 				6D7F8B482636FB7B00D8FEDA /* RestaurantManager.swift */,
 				6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */,
+				6D64A5882657F5FF003CF3C8 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -471,6 +505,8 @@
 				6D30B70C25E7FA3D00F226EA /* Frameworks */,
 				6D30B70D25E7FA3D00F226EA /* Resources */,
 				23D8699DC87AFB5B0EF80258 /* [CP] Embed Pods Frameworks */,
+				FED69397174F201F4F7A8176 /* [CP] Copy Pods Resources */,
+				6D64A57B2657B3DB003CF3C8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,6 +545,7 @@
 				6D30B72D25E7FA3E00F226EA /* Frameworks */,
 				6D30B72E25E7FA3E00F226EA /* Resources */,
 				19F0C40DDF6BE0FFC2662429 /* [CP] Embed Pods Frameworks */,
+				DF6E8C3EE7F770312BF36CC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -691,6 +728,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DF6E8C3EE7F770312BF36CC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eater-EaterUITests/Pods-Eater-EaterUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eater-EaterUITests/Pods-Eater-EaterUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eater-EaterUITests/Pods-Eater-EaterUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FED69397174F201F4F7A8176 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eater/Pods-Eater-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eater/Pods-Eater-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eater/Pods-Eater-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -702,9 +773,11 @@
 				6DF36D052653FAAB00386169 /* BackgroundAppVC.swift in Sources */,
 				6D64A57726554DB7003CF3C8 /* SettingsViewController.swift in Sources */,
 				6DD2D3D4260A29F30028F206 /* RestaurantContent.swift in Sources */,
+				6D64A5802657B546003CF3C8 /* LoginVC.swift in Sources */,
 				6D6C14F626037BD7002423D6 /* HomeCoordinatorFactory.swift in Sources */,
 				6D8134D62636B6180044C438 /* RealmRestaurants.swift in Sources */,
 				6DF36CBA265259D400386169 /* GATraker.swift in Sources */,
+				6D64A5842657B592003CF3C8 /* LoginViewModel.swift in Sources */,
 				6D30B76025E7FEB300F226EA /* HeadViewController.swift in Sources */,
 				6D6C150526039051002423D6 /* RestaurantViewCell.swift in Sources */,
 				6D6BEB2026454F50006E01C7 /* AppLocationManager.swift in Sources */,
@@ -714,6 +787,7 @@
 				6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */,
 				6DF36CBF2652622100386169 /* GAEventTrackable.swift in Sources */,
 				6D74D00B26331506007A0C56 /* CustonImageButton.swift in Sources */,
+				6D64A5892657F5FF003CF3C8 /* UserManager.swift in Sources */,
 				6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */,
 				6D30B75225E7FD9B00F226EA /* MainCoordinator.swift in Sources */,
 				6D6BEB0626453D30006E01C7 /* LocationModel.swift in Sources */,

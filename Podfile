@@ -8,6 +8,9 @@ target 'Eater' do
   # Pods for Eater
   pod 'RealmSwift'
   pod 'Firebase/Analytics'
+  pod 'FirebaseUI'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
 
   target 'EaterTests' do
     inherit! :search_paths

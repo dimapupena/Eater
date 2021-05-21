@@ -18,7 +18,7 @@ class MainCoordinator: BaseCoordinator {
     
     override func start() {
         startInitialFlow()
-        makeHeadVC()
+        makeLoginVC()
     }
     
     func startInitialFlow() {
@@ -28,8 +28,18 @@ class MainCoordinator: BaseCoordinator {
         }
     }
     
+    func makeLoginVC() {
+        let vc = factory.makeLoginVC()
+        // closure  has to be weak self
+        vc.userLoggedInAction = {
+            self.makeHeadVC()
+        }
+        router.pushViewController(vc, animated: true)
+    }
+    
     func makeHeadVC() {
         let vc = factory.makeHeadVC()
+        // closure  has to be weak self
         vc.onButtonClick = {
             self.makeHomeFlow()
         }
