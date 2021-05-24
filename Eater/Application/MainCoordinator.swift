@@ -61,15 +61,19 @@ class MainCoordinator: BaseCoordinator {
     }
     
     func makeSettingsVC() {
-        let informationVC = factory.makeSettingsVC()
-        informationVC.backButtonAction = { [weak self] in
+        let settingsVC = factory.makeSettingsVC()
+        settingsVC.backButtonAction = { [weak self] in
             self?.router.popViewController(animated: true)
         }
-        informationVC.changeBackgroundAction = { [weak self, weak informationVC] in
+        settingsVC.changeBackgroundAction = { [weak self, weak settingsVC] in
             guard let backgroundVC = self?.factory.makeBackgroundAppVC() else { return }
-            informationVC?.present(backgroundVC, animated: true, completion: nil)
+            backgroundVC.onFinish = { [weak self] in
+                settingsVC?.dismiss(animated: true, completion: nil)
+                self?.router.popViewController(animated: true)
+            }
+            settingsVC?.present(backgroundVC, animated: true, completion: nil)
         }
-        router.pushViewController(informationVC, animated: true)
+        router.pushViewController(settingsVC, animated: true)
     }
     
     func makeHomeFlow() {

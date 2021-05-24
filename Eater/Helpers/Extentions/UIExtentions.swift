@@ -13,6 +13,19 @@ class DeviceSize {
     static let height = UIScreen.main.bounds.size.height
 }
 
+class ClickWithDebounce {
+    static var lastTappedTime: TimeInterval = 0
+    
+    static func tapWithDebounce(fromNow time: Double = 0.45, action: () -> ()){
+        if lastTappedTime + time < NSDate().timeIntervalSince1970 {
+            lastTappedTime = NSDate().timeIntervalSince1970
+            action()
+        } else {
+            lastTappedTime = NSDate().timeIntervalSince1970
+        }
+    }
+}
+
 extension UIView {
     func setZeroConstraits(with parentView : UIView) {
         if !self.translatesAutoresizingMaskIntoConstraints {

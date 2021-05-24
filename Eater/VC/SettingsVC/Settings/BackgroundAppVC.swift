@@ -10,6 +10,8 @@ import UIKit
 
 class BackgroundAppVC: UIViewController {
     
+    var onFinish: (() -> Void)?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -147,6 +149,7 @@ class BackgroundAppVC: UIViewController {
     
     @objc private func saveBackgroundColorClick() {
         UIColor.backgroundColor.color = textBackcolorView.backgroundColor!
+        onFinish?()
     }
 }
 

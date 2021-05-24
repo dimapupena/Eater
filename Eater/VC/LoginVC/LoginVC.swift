@@ -167,7 +167,9 @@ class LoginVC: UIViewController {
     }
     
     @objc private func signIn() {
-        loginViewModel.signInUser(email: emailTextField.text ?? "", password: passwordField.text ?? "")
+        ClickWithDebounce.tapWithDebounce {
+            loginViewModel.signInUser(email: emailTextField.text ?? "", password: passwordField.text ?? "")
+        }
     }
     
     @objc private func signUp() {
