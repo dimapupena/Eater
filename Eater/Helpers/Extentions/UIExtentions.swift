@@ -27,7 +27,7 @@ class ClickWithDebounce {
 }
 
 extension UIView {
-    func setZeroConstraits(with parentView : UIView) {
+    func setZeroConstraits(with parentView: UIView) {
         if !self.translatesAutoresizingMaskIntoConstraints {
             self.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
             self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
@@ -35,7 +35,8 @@ extension UIView {
             self.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
         }
     }
-    func setSafeZeroConstraits(with parentView : UIView) {
+    
+    func setSafeZeroConstraits(with parentView: UIView) {
         if !self.translatesAutoresizingMaskIntoConstraints {
             self.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor).isActive = true
             self.bottomAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -174,6 +175,7 @@ extension UIViewController {
         let view = LoaderView()
         self.view.addSubview(view)
         view.setZeroConstraits(with: self.view)
+        view.startAnimation()
     }
     
     func hideLoaderView() {

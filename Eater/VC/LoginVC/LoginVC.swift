@@ -39,6 +39,7 @@ class LoginVC: UIViewController {
         textField.layer.borderWidth = 2
         textField.backgroundColor = .clear
         textField.placeholder = "Email"
+        textField.text = "mail@gmail.com"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -58,6 +59,7 @@ class LoginVC: UIViewController {
         textField.layer.borderWidth = 2
         textField.backgroundColor = .clear
         textField.placeholder = "Password"
+        textField.text = "111111"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -168,7 +170,13 @@ class LoginVC: UIViewController {
     
     @objc private func signIn() {
         ClickWithDebounce.tapWithDebounce {
-            loginViewModel.signInUser(email: emailTextField.text ?? "", password: passwordField.text ?? "")
+            self.showLoaderView()
+            loginViewModel.signInUser(email: emailTextField.text ?? "", password: passwordField.text ?? "") { success in
+                if success {
+                    self.userLoggedInAction?()
+                }
+                self.hideLoaderView()
+            }
         }
     }
     
@@ -179,6 +187,6 @@ class LoginVC: UIViewController {
 
 extension LoginVC: LoginViewModelDelegate {
     func userLoggedIn() {
-        self.userLoggedInAction?()
+        print("user logged in delegate action")
     }
 }

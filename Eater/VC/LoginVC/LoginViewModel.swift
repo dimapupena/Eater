@@ -31,13 +31,15 @@ class LoginViewModel {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    func signInUser(email: String, password: String) {
+    func signInUser(email: String, password: String, completion: ((Bool) -> Void)? = nil) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let strongSelf = self else { return }
             if error == nil {
                 strongSelf.delegate?.userLoggedIn()
+                completion?(true)
             } else {
                 print("error failed")
+                completion?(false)
             }
         }
     }
