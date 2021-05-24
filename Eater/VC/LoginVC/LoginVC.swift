@@ -89,6 +89,7 @@ class LoginVC: UIViewController {
     }()
     
     override func viewDidLoad() {
+        hideKeyboardWhenTappedAround()
         setupView()
     }
     
