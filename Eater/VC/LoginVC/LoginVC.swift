@@ -12,8 +12,6 @@ class LoginVC: UIViewController {
     
     var userLoggedInAction: (() -> Void)?
     
-    let loginViewModel: LoginViewModel = LoginViewModel()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +89,6 @@ class LoginVC: UIViewController {
     }()
     
     override func viewDidLoad() {
-        self.loginViewModel.delegate = self
         setupView()
     }
     
@@ -171,22 +168,21 @@ class LoginVC: UIViewController {
     @objc private func signIn() {
         ClickWithDebounce.tapWithDebounce {
             self.showLoaderView()
-            loginViewModel.signInUser(email: emailTextField.text ?? "", password: passwordField.text ?? "") { success in
+            UserManager.sharedInstance.signInUser(email:  emailTextField.text ?? "", password: passwordField.text ?? "") { [weak self] success in
                 if success {
-                    self.userLoggedInAction?()
+                    self?.userLoggedInAction?()
                 }
-                self.hideLoaderView()
+                self?.hideLoaderView()
             }
         }
     }
     
     @objc private func signUp() {
-        loginViewModel.signUpNewUser(email: emailTextField.text ?? "", password: passwordField.text ?? "")
-    }
-}
-
-extension LoginVC: LoginViewModelDelegate {
-    func userLoggedIn() {
-        print("user logged in delegate action")
+        ClickWithDebounce.tapWithDebounce {
+            self.showLoaderView()
+            UserManager.sharedInstance.signUpNewUser(email: emailTextField.text ?? "", password: passwordField.text ?? "") { [weak self] success in
+                self?.hideLoaderView()
+            }
+        }
     }
 }

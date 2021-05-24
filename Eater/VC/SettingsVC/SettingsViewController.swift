@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController, GAEventTrackable {
     
     var backButtonAction: (() -> Void)?
     var changeBackgroundAction: (() -> Void)?
+    var logOutAction: (() -> Void)?
     
     private let backButton: BackButton = {
         let button = BackButton()
@@ -29,24 +30,35 @@ class SettingsViewController: UIViewController, GAEventTrackable {
         return button
     }()
     
+    private let logOutButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(red: 224, green: 114, blue: 114)
+        button.setTitle("Log out", for: .normal)
+        button.layer.cornerRadius = 25
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(logOutClicked), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         self.view.backgroundColor = .lightGray
         setupBackButton()
         setupChangeBackColorButton()
+        setupLogOutButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         openScreenEvent(screenTitle: GAOpenScreenTitles.settingsVC.rawValue)
     }
     
-    func setupBackButton() {
+    private func setupBackButton() {
         view.addSubview(backButton)
         
         backButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
     }
     
-    func setupChangeBackColorButton() {
+    private func setupChangeBackColorButton() {
         view.addSubview(changeBackgroundButton)
         
         changeBackgroundButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
@@ -55,12 +67,25 @@ class SettingsViewController: UIViewController, GAEventTrackable {
         changeBackgroundButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    @objc func backButtonClicked() {
+    private func setupLogOutButton() {
+        view.addSubview(logOutButton)
+        
+        logOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        logOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50).isActive = true
+        logOutButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        logOutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    @objc private func backButtonClicked() {
         self.backButtonAction?()
     }
     
-    @objc func changeBackgroundClicked() {
+    @objc private func changeBackgroundClicked() {
         self.changeBackgroundAction?()
+    }
+    
+    @objc private func logOutClicked() {
+        self.logOutAction?()
     }
     
 }

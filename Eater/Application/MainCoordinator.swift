@@ -18,7 +18,11 @@ class MainCoordinator: BaseCoordinator {
     
     override func start() {
         startInitialFlow()
-        makeLoginVC()
+        if UserManager.sharedInstance.isUserLoggedIn() {
+            makeHeadVC()
+        } else {
+            makeLoginVC()
+        }
     }
     
     func startInitialFlow() {
@@ -73,6 +77,9 @@ class MainCoordinator: BaseCoordinator {
             }
             settingsVC?.present(backgroundVC, animated: true, completion: nil)
         }
+        settingsVC.logOutAction = { [weak self] in
+            self?.performLogOut()
+        }
         router.pushViewController(settingsVC, animated: true)
     }
     
@@ -80,5 +87,13 @@ class MainCoordinator: BaseCoordinator {
         let homeCo = factory.makeHomeCoordinator(router: router, factory: HomeCoordinatorFactory())
         self.addChild(homeCo)
         homeCo.start()
+    }
+    
+    private func performLogOut() {
+        UserManager.sharedInstance.signOutUser { [weak self] success in
+            if success {
+                self?.makeLoginVC()
+            }
+        }
     }
 }
