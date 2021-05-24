@@ -11,6 +11,7 @@ target 'Eater' do
   pod 'FirebaseUI'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
+  pod 'Firebase/Storage'
 
   target 'EaterTests' do
     inherit! :search_paths

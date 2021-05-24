@@ -17,18 +17,23 @@ class MainCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        startInitialFlow()
+        makeSplashVC()
+    }
+    
+    func makeSplashVC() {
+        let vc = factory.makeSplashVC()
+        // should be weak self
+        vc.onFinish = { success in
+            self.startMainFlow(success)
+        }
+        router.pushViewController(vc, animated: true)
+    }
+    
+    func startMainFlow(_ successLoaded: Bool) {
         if UserManager.sharedInstance.isUserLoggedIn() {
             makeHeadVC()
         } else {
             makeLoginVC()
-        }
-    }
-    
-    func startInitialFlow() {
-        DispatchQueue.main.async {
-            ConfigManager.sharer.loadData()
-            RealmHelper.updateRealmData()
         }
     }
     

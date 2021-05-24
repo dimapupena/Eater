@@ -25,6 +25,7 @@
 		6D64A5802657B546003CF3C8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A57F2657B546003CF3C8 /* LoginVC.swift */; };
 		6D64A5892657F5FF003CF3C8 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A5882657F5FF003CF3C8 /* UserManager.swift */; };
 		6D64A58B2657FF08003CF3C8 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A58A2657FF08003CF3C8 /* LoaderView.swift */; };
+		6D64A591265BD3C6003CF3C8 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D64A590265BD3C6003CF3C8 /* SplashVC.swift */; };
 		6D6BEB0626453D30006E01C7 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB0526453D30006E01C7 /* LocationModel.swift */; };
 		6D6BEB2026454F50006E01C7 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */; };
 		6D6C14E32603726E002423D6 /* appData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C14E22603726E002423D6 /* appData.json */; };
@@ -108,6 +109,7 @@
 		6D64A57F2657B546003CF3C8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6D64A5882657F5FF003CF3C8 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		6D64A58A2657FF08003CF3C8 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		6D64A590265BD3C6003CF3C8 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		6D6BEB0526453D30006E01C7 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		6D6BEB1F26454F50006E01C7 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
 		6D6C14E22603726E002423D6 /* appData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
@@ -229,6 +231,7 @@
 		6D30B74E25E7FD3600F226EA /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				6D64A592265BD3E0003CF3C8 /* SplashVC */,
 				6D64A57E2657B523003CF3C8 /* LoginVC */,
 				6D6BEABC2642D897006E01C7 /* SettingsVC */,
 				6D5093722638286B009E0B40 /* LovedRestaurants */,
@@ -356,6 +359,14 @@
 				6D64A58A2657FF08003CF3C8 /* LoaderView.swift */,
 			);
 			path = Loader;
+			sourceTree = "<group>";
+		};
+		6D64A592265BD3E0003CF3C8 /* SplashVC */ = {
+			isa = PBXGroup;
+			children = (
+				6D64A590265BD3C6003CF3C8 /* SplashVC.swift */,
+			);
+			path = SplashVC;
 			sourceTree = "<group>";
 		};
 		6D6BEABC2642D897006E01C7 /* SettingsVC */ = {
@@ -783,6 +794,7 @@
 				6D6C14FF26037C3D002423D6 /* RestaurantVC.swift in Sources */,
 				6D30B78C25E806C900F226EA /* StandartActionButton.swift in Sources */,
 				6DF36CBF2652622100386169 /* GAEventTrackable.swift in Sources */,
+				6D64A591265BD3C6003CF3C8 /* SplashVC.swift in Sources */,
 				6D74D00B26331506007A0C56 /* CustonImageButton.swift in Sources */,
 				6D64A5892657F5FF003CF3C8 /* UserManager.swift in Sources */,
 				6D6C14EE26037B7B002423D6 /* HomeCoordinator.swift in Sources */,

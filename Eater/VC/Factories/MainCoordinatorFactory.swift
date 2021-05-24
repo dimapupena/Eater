@@ -34,4 +34,8 @@ class MainCoordinatorFactory {
         return LoginVC()
     }
     
+    func makeSplashVC() -> SplashVC {
+        return SplashVC()
+    }
+    
 }

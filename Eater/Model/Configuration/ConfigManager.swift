@@ -6,25 +6,28 @@
 //
 
 import Foundation
+import Firebase
 
 class ConfigManager {
     var appConfiguration: AppConfiguration?
     
     static var sharer = ConfigManager()
     
-    func loadData() {
-        appConfiguration = loadJson(jsonFile: "appData")
+    func loadData(completion: ((Bool) -> Void)?) {
+        loadJson(url: "appData.json", completion: completion)
     }
     
-    func loadJson(jsonFile: String) -> AppConfiguration? {
+    private func loadJson(url: String, completion: ((Bool) -> Void)?) {
        let decoder = JSONDecoder()
-        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let output = try? decoder.decode(AppConfiguration.self, from: data)
-            else {
-            return nil
+        Storage.storage().reference(withPath: url).getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("get error \(error)")
+                completion?(false)
+            } else {
+                guard let data = data else { return }
+                self.appConfiguration = try? decoder.decode(AppConfiguration.self, from: data)
+                completion?(true)
+            }
         }
-
-       return output
     }
 }

@@ -437,6 +437,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Storage
   - FirebaseUI
   - FirebaseUI/Auth
   - FirebaseUI/Google
@@ -505,6 +506,6 @@ SPEC CHECKSUMS:
   RealmSwift: 7462f44bc04b61505ef70e4863ee7ce48fa12ede
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 1df76a4cf1267d1eb13731673171ecdd4bb0b156
+PODFILE CHECKSUM: 8e1b95ad05c2dc3e6b0828bb7693c32dac375739
 
 COCOAPODS: 1.10.1
