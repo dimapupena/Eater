@@ -18,7 +18,7 @@ class UserManager {
         return (Auth.auth().currentUser != nil)
     }
     
-    func AddUserListener() {
+    func addUserListener() {
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
             if user != nil {
                 print("added user listener \(String(describing: user?.email))")
@@ -37,7 +37,7 @@ class UserManager {
             if error == nil {
                 completion?(true)
             } else {
-                print("error failed")
+                print("sign in error failed: \(String(describing: error))")
                 completion?(false)
             }
         }
@@ -45,12 +45,18 @@ class UserManager {
     
     func signUpNewUser(email: String, password: String, completion: ((Bool) -> Void)? = nil) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            
+            if error == nil {
+                completion?(true)
+            } else {
+                print("sign up error failed: \(String(describing: error))")
+                completion?(false)
+            }
         }
     }
     
     func signOutUser(_ completion: ((Bool) -> Void)? = nil) {
         do {
+            self.removeUserListener()
             try Auth.auth().signOut()
             completion?(true)
         } catch {

@@ -29,7 +29,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(vc, animated: true)
     }
     
-    func startMainFlow(_ successLoaded: Bool) {
+    func startMainFlow(_ successLoaded: Bool = true) {
         if UserManager.sharedInstance.isUserLoggedIn() {
             makeHeadVC()
         } else {
@@ -39,24 +39,36 @@ class MainCoordinator: BaseCoordinator {
     
     func makeLoginVC() {
         let vc = factory.makeLoginVC()
-        // closure  has to be weak self
-        vc.userLoggedInAction = {
-            self.makeHeadVC()
+        vc.userLoggedInAction = { [weak self] in
+            self?.makeHeadVC()
+        }
+        vc.signUpAction = { [weak self] in
+            self?.makeSignUpVC()
         }
         router.pushViewController(vc, animated: true)
     }
     
     func makeHeadVC() {
         let vc = factory.makeHeadVC()
-        // closure  has to be weak self
-        vc.onButtonClick = {
-            self.makeHomeFlow()
+        vc.onButtonClick = { [weak self] in
+            self?.makeHomeFlow()
         }
         vc.settingsButtonAction = { [weak self] in
             self?.makeSettingsVC()
         }
         vc.userInformationAction = { [weak self] in
             self?.makeInformationVC(info: UserUsefulInformation(title: "some title", description: "some description"))
+        }
+        router.pushViewController(vc, animated: true)
+    }
+    
+    func makeSignUpVC() {
+        let vc = factory.makeSignUpVC()
+        vc.backButtonAction = {[weak self] in
+            self?.router.popViewController(animated: true)
+        }
+        vc.userLoggedUpAction = { [weak self] success in
+            self?.startMainFlow()
         }
         router.pushViewController(vc, animated: true)
     }

@@ -1,23 +1,29 @@
 //
-//  LoginVC.swift
+//  SignUpVC.swift
 //  Eater
 //
-//  Created by Dmytro Pupena on 21.05.2021.
+//  Created by Dmytro Pupena on 25.05.2021.
 //
 
 import Foundation
 import UIKit
 
-class LoginVC: UIViewController {
+class SignUpVC: UIViewController {
     
-    var userLoggedInAction: (() -> Void)?
-    var signUpAction: (() -> Void)?
+    var userLoggedUpAction: ((Bool) -> Void)?
+    var backButtonAction: (() -> Void)?
+    
+    private let backButton: BackButton = {
+        let button = BackButton()
+        button.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
+        return button
+    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "Login"
+        label.text = "Please add your data, and register"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -38,7 +44,6 @@ class LoginVC: UIViewController {
         textField.layer.borderWidth = 2
         textField.backgroundColor = .clear
         textField.placeholder = "Email"
-        textField.text = "mail@gmail.com"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -58,7 +63,6 @@ class LoginVC: UIViewController {
         textField.layer.borderWidth = 2
         textField.backgroundColor = .clear
         textField.placeholder = "Password"
-        textField.text = "111111"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -72,18 +76,10 @@ class LoginVC: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
-    private let signInButton: StandartActionButton = {
-        let button = StandartActionButton()
-        button.setText("Sign in", font: .boldSystemFont(ofSize: 14))
-        button.backgroundColor = UIColor(hexString: "#2d74b3")
-        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-        return button
-    }()
     
     private let signUpButton: StandartActionButton = {
         let button = StandartActionButton()
-        button.setText("I am a new user", font: .boldSystemFont(ofSize: 14))
+        button.setText("Sign up", font: .boldSystemFont(ofSize: 14))
         button.backgroundColor = UIColor(hexString: "#2db35e")
         button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         return button
@@ -95,23 +91,30 @@ class LoginVC: UIViewController {
     }
     
     func setupView() {
-        self.view.backgroundColor = UIColor(hexString: "#5e918d")
+        self.view.backgroundColor = UIColor(hexString: "#e4eb7f")
         
+        setupBackButton()
         setupTitleLabel()
         setupLoginStackView()
         setupEmailLabel()
         setupEmailTextField()
         setupPasswordLabel()
         setupPasswordField()
-        setupSignInButton()
         setupSignUpButton()
+    }
+    
+    func setupBackButton() {
+        view.addSubview(backButton)
+        
+        backButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
     }
     
     func setupTitleLabel() {
         self.view.addSubview(titleLabel)
         
         titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 30).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
     }
     
@@ -153,35 +156,25 @@ class LoginVC: UIViewController {
         passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func setupSignInButton() {
-        loginStackView.addArrangedSubview(signInButton)
-
-        signInButton.widthAnchor.constraint(equalToConstant: 92).isActive = true
-        signInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
-    }
-    
     func setupSignUpButton() {
         loginStackView.addArrangedSubview(signUpButton)
         
-        signUpButton.widthAnchor.constraint(equalToConstant: 132).isActive = true
-        signUpButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        signUpButton.widthAnchor.constraint(equalToConstant: 92).isActive = true
+        signUpButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
     }
     
-    @objc private func signIn() {
-        ClickWithDebounce.tapWithDebounce {
-            self.showLoaderView()
-            UserManager.sharedInstance.signInUser(email:  emailTextField.text ?? "", password: passwordField.text ?? "") { [weak self] success in
-                if success {
-                    self?.userLoggedInAction?()
-                }
-                self?.hideLoaderView()
-            }
-        }
+    @objc private func backButtonClicked() {
+        self.backButtonAction?()
     }
     
     @objc private func signUp() {
         ClickWithDebounce.tapWithDebounce {
-            self.signUpAction?()
+            self.showLoaderView()
+            UserManager.sharedInstance.signUpNewUser(email: emailTextField.text ?? "", password: passwordField.text ?? "") { [weak self] success in
+                self?.hideLoaderView()
+                self?.userLoggedUpAction?(success)
+            }
         }
     }
+    
 }

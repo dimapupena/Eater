@@ -34,6 +34,10 @@ class MainCoordinatorFactory {
         return LoginVC()
     }
     
+    func makeSignUpVC() -> SignUpVC {
+        return SignUpVC()
+    }
+    
     func makeSplashVC() -> SplashVC {
         return SplashVC()
     }
