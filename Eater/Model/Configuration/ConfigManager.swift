@@ -10,6 +10,7 @@ import Firebase
 
 class ConfigManager {
     var appConfiguration: AppConfiguration?
+    var dataWasSynchronized: Bool = false
     
     static var sharer = ConfigManager()
     
@@ -26,6 +27,7 @@ class ConfigManager {
             } else {
                 guard let data = data else { return }
                 self.appConfiguration = try? decoder.decode(AppConfiguration.self, from: data)
+                self.dataWasSynchronized = true
                 completion?(true)
             }
         }

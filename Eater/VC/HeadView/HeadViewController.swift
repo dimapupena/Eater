@@ -91,7 +91,16 @@ class HeadViewController: UIViewController, GAEventTrackable {
     }
     
     @objc func buttonClick() {
-        self.onButtonClick?()
+        if !ConfigManager.sharer.dataWasSynchronized {
+            self.showLoaderView()
+            ConfigManager.sharer.loadData { [weak self] success in
+                self?.hideLoaderView()
+                RealmHelper.updateRealmData()
+                self?.onButtonClick?()
+            }
+        } else {
+            self.onButtonClick?()
+        }
     }
     
     @objc func settingsButtonClicked() {
