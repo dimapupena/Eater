@@ -19,8 +19,8 @@ class SplashVC: UIViewController {
     }
     
     func downloadData() {
-        RealmHelper.updateRealmData()
         ConfigManager.sharer.loadData { [weak self] success in
+            RealmHelper.updateRealmData()
             self?.onFinish?(success)
         }
     }

@@ -19,8 +19,11 @@ class MainCoordinator: BaseCoordinator {
     override func start() {
         makeSplashVC()
     }
+    func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedOutNotification), name: .userLoggedOut, object: nil)
+    }
     
-    func makeSplashVC() {
+    private func makeSplashVC() {
         let vc = factory.makeSplashVC()
         // should be weak self
         vc.onFinish = { success in
@@ -29,7 +32,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(vc, animated: true)
     }
     
-    func startMainFlow(_ successLoaded: Bool = true) {
+    private func startMainFlow(_ successLoaded: Bool = true) {
         if UserManager.sharedInstance.isUserLoggedIn() {
             makeHeadVC()
         } else {
@@ -37,7 +40,7 @@ class MainCoordinator: BaseCoordinator {
         }
     }
     
-    func makeLoginVC() {
+    private func makeLoginVC() {
         let vc = factory.makeLoginVC()
         vc.userLoggedInAction = { [weak self] in
             self?.makeHeadVC()
@@ -48,7 +51,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(vc, animated: true)
     }
     
-    func makeHeadVC() {
+    private func makeHeadVC() {
         let vc = factory.makeHeadVC()
         vc.onButtonClick = { [weak self] in
             self?.makeHomeFlow()
@@ -62,7 +65,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(vc, animated: true)
     }
     
-    func makeSignUpVC() {
+    private func makeSignUpVC() {
         let vc = factory.makeSignUpVC()
         vc.backButtonAction = {[weak self] in
             self?.router.popViewController(animated: true)
@@ -73,7 +76,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(vc, animated: true)
     }
     
-    func makeInformationVC(info: UserUsefulInformation) {
+    private func makeInformationVC(info: UserUsefulInformation) {
         let informationVC = factory.makeImportantinformationVC(userInformation: info)
         informationVC.backButtonAction = { [weak self] in
             self?.router.popViewController(animated: true)
@@ -81,7 +84,7 @@ class MainCoordinator: BaseCoordinator {
         router.pushViewController(informationVC, animated: true)
     }
     
-    func makeSettingsVC() {
+    private func makeSettingsVC() {
         let settingsVC = factory.makeSettingsVC()
         settingsVC.backButtonAction = { [weak self] in
             self?.router.popViewController(animated: true)
@@ -97,10 +100,13 @@ class MainCoordinator: BaseCoordinator {
         settingsVC.logOutAction = { [weak self] in
             self?.performLogOut()
         }
+        settingsVC.userDeleteAction = { [weak self] in
+            self?.startMainFlow()
+        }
         router.pushViewController(settingsVC, animated: true)
     }
     
-    func makeHomeFlow() {
+    private func makeHomeFlow() {
         let homeCo = factory.makeHomeCoordinator(router: router, factory: HomeCoordinatorFactory())
         self.addChild(homeCo)
         homeCo.start()
@@ -112,5 +118,9 @@ class MainCoordinator: BaseCoordinator {
                 self?.makeLoginVC()
             }
         }
+    }
+    
+    @objc private func userLoggedOutNotification() {
+        self.startMainFlow()
     }
 }

@@ -23,6 +23,7 @@ class UserManager {
             if user != nil {
                 print("added user listener \(String(describing: user?.email))")
             } else {
+//                NotificationCenter.default.post(name: .userLoggedOut, object: nil)
                 print("could't add user")
             }
         })
@@ -67,6 +68,18 @@ class UserManager {
     
     func getUserInformation() -> User? {
         return Auth.auth().currentUser
+    }
+    
+    func deleteUser(completion: @escaping ((Bool) -> Void)) {
+        if let currentUser = Auth.auth().currentUser {
+            currentUser.delete { error in
+                if error == nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
     }
     
     

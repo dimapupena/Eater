@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController, GAEventTrackable {
     var backButtonAction: (() -> Void)?
     var changeBackgroundAction: (() -> Void)?
     var logOutAction: (() -> Void)?
+    var userDeleteAction: (() -> Void)?
     
     private let backButton: BackButton = {
         let button = BackButton()
@@ -27,6 +28,16 @@ class SettingsViewController: UIViewController, GAEventTrackable {
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(changeBackgroundClicked), for: .touchUpInside)
+        return button
+    }()
+    
+    private let userDeleteButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(red: 227, green: 89, blue: 89)
+        button.setTitle("Delete user", for: .normal)
+        button.layer.cornerRadius = 25
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(userDeleteClicked), for: .touchUpInside)
         return button
     }()
     
@@ -45,6 +56,7 @@ class SettingsViewController: UIViewController, GAEventTrackable {
         setupBackButton()
         setupChangeBackColorButton()
         setupLogOutButton()
+        setupUserDeleteButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +88,16 @@ class SettingsViewController: UIViewController, GAEventTrackable {
         logOutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    private func setupUserDeleteButton() {
+        view.addSubview(userDeleteButton)
+        
+        userDeleteButton.leadingAnchor.constraint(equalTo: logOutButton.leadingAnchor).isActive = true
+        userDeleteButton.trailingAnchor.constraint(equalTo: logOutButton.trailingAnchor).isActive = true
+        userDeleteButton.bottomAnchor.constraint(equalTo: logOutButton.topAnchor, constant: -20).isActive = true
+        userDeleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    
     @objc private func backButtonClicked() {
         self.backButtonAction?()
     }
@@ -86,6 +108,16 @@ class SettingsViewController: UIViewController, GAEventTrackable {
     
     @objc private func logOutClicked() {
         self.logOutAction?()
+    }
+    
+    @objc private func userDeleteClicked() {
+        self.showLoaderView()
+        UserManager.sharedInstance.deleteUser { [weak self] success in
+            self?.hideLoaderView()
+            if success {
+                self?.userDeleteAction?()
+            }
+        }
     }
     
 }
