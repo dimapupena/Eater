@@ -113,9 +113,11 @@ class MainCoordinator: BaseCoordinator {
     }
     
     private func performLogOut() {
-        UserManager.sharedInstance.signOutUser { [weak self] success in
-            if success {
-                self?.makeLoginVC()
+        RealmHelper.deleteRealmData { _ in
+            UserManager.sharedInstance.signOutUser { [weak self] success in
+                if success {
+                    self?.makeLoginVC()
+                }
             }
         }
     }

@@ -15,5 +15,10 @@ class RealmHelper {
         RestaurantManager.shared.updateUserRestaurants()
     }
     
+    static func deleteRealmData(completion: ((Bool) -> Void)) {
+        RestaurantManager.shared.deleteRestaurantData(completion: completion)
+        ConfigManager.sharer.dataWasSynchronized = false
+    }
+    
 }
 

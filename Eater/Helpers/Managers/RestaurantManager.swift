@@ -73,4 +73,19 @@ class RestaurantManager {
             print("error")
         }
     }
+    
+    func deleteRestaurantData(completion: ((Bool) -> Void)) {
+        do {
+            let realm = try Realm()
+            let restaurantsObjects = realm.objects(RealmRestaurants.self)
+            
+            try realm.write({
+                realm.delete(restaurantsObjects)
+            })
+            completion(true)
+        } catch {
+            print("can't delete data from realm, error: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
 }
