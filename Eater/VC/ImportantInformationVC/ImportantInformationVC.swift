@@ -50,6 +50,9 @@ class ImportantInformationVC: UIViewController, GAEventTrackable {
     
     init(importantInformation: UserUsefulInformation) {
         self.importantInformation = importantInformation
+        self.titleLabel.text = importantInformation.title
+        self.textView.text = importantInformation.description
+        
         super.init(nibName: nil, bundle: nil)
     }
 
