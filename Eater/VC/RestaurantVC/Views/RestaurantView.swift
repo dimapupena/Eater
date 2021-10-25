@@ -16,6 +16,8 @@ protocol RestaurantViewDelegate: class {
 
 class RestaurantView: UIView {
     
+    var openPreviewView: (() -> Void)?
+    
     weak var delegate: RestaurantViewDelegate?
     var isFavourite: Bool = false {
         didSet {
@@ -90,6 +92,13 @@ class RestaurantView: UIView {
         return imageView
     }()
     
+    private lazy var restaurantPreviewImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "restaurantPreview")
+        return imageView
+    }()
+    
     private lazy var ratingLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -136,6 +145,7 @@ class RestaurantView: UIView {
         setAddressLabel()
         setRatingLabel()
         setGetDirectionImage()
+        setRestaurantPreviewImage()
     }
     
     private func setLogoImage() {
@@ -223,6 +233,18 @@ class RestaurantView: UIView {
         getLocationImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func setRestaurantPreviewImage() {
+        addSubview(restaurantPreviewImage)
+        
+        restaurantPreviewImage.topAnchor.constraint(equalTo: getLocationImage.topAnchor).isActive = true
+        restaurantPreviewImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        restaurantPreviewImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        restaurantPreviewImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openRestaurantPreviewVideo))
+        restaurantPreviewImage.isUserInteractionEnabled = true
+        restaurantPreviewImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     @objc private func createOpenDirectionAlert() {
         let alert = UIAlertController(title: "Do you want to get direction to restaurant", message: "You will get way to restaurant. It can help you to understand where restaurant is and how many time you need to get there.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Open map", style: .default, handler: { (action) in
@@ -230,6 +252,10 @@ class RestaurantView: UIView {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func openRestaurantPreviewVideo() {
+        self.openPreviewView?()
     }
     
     @objc func bookStatusChanged()

@@ -19,6 +19,7 @@ class RestaurantVC: UIViewController, GAEventTrackable {
     var openWebViewItem: ((_ link: String?) -> Void)?
     var backButtonAction: (() -> Void)?
     var openUserLoved: (() -> Void)?
+    var openRestaurantPreview: (() -> Void)?
     
     private let backButton: BackButton = {
         let button = BackButton()
@@ -177,6 +178,7 @@ extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         let cell = restaurantCollection.dequeueReusableCell(withReuseIdentifier: "RestaurantViewCell", for: indexPath) as! RestaurantViewCell
         if let restaurantdata = self.restaurantdata {
             cell.setupViewParameters(restaurantdata[indexPath.row].name)
+            cell.delegate = self
             print(indexPath.row)
         }
         return cell
@@ -192,5 +194,11 @@ extension RestaurantVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         createOpenLinkAlert(indexPath)
+    }
+}
+
+extension RestaurantVC: RestaurantViewCellDelegate {
+    func showRestaurantPreview() {
+        self.openRestaurantPreview?()
     }
 }

@@ -18,7 +18,7 @@ class AppLocationManager: NSObject {
     
     func initalLocationFlow() {
 //        let center = UNUserNotificationCenter.current()
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startMonitoringVisits()
         locationManager.delegate = self

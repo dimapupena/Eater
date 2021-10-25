@@ -27,6 +27,9 @@ class HomeCoordinator : BaseCoordinator {
         vc.openWebViewItem = { [weak self] link in
             self?.makeRestaurantWebView(link)
         }
+        vc.openRestaurantPreview = { [weak self] in
+            print("openNewVC")
+        }
         router.pushViewController(vc, animated: true)
     }
     

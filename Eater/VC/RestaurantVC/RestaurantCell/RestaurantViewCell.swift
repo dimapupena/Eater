@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
+protocol RestaurantViewCellDelegate: AnyObject {
+    func showRestaurantPreview()
+}
+
 class RestaurantViewCell: UICollectionViewCell {
     
     var restaurantView: RestaurantView = RestaurantView()
     var restaurantViewModel: RestaurantCellViewModel!
+    
+    weak var delegate: RestaurantViewCellDelegate? 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +38,10 @@ class RestaurantViewCell: UICollectionViewCell {
         restaurantView.setupViewParameters(rastaurant)
         self.contentView.addSubview(restaurantView)
         restaurantView.setZeroConstraits(with: self.contentView)
+        
+        restaurantView.openPreviewView = { [weak self] in
+            self?.delegate?.showRestaurantPreview()
+        }
     }
 }
 
